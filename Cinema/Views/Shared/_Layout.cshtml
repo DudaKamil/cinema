@@ -21,13 +21,14 @@
             <div class="navbar-collapse collapse">
                 @Html.AntiForgeryToken()
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Co gramy?", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Cennik", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Zakładka 1", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Zakładka 2", "Index", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <hr/>
         <hr/>
         @RenderBody()
         <hr/>
