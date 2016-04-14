@@ -91,7 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\authentication\auth.css" />
+    <Content Include="Content\account\auth.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
     <Content Include="Content\vendor\bootstrap.css" />
@@ -107,7 +107,7 @@
     <Content Include="Content\vendor\bootstrap.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
-    <Content Include="Scripts\authentication\auth.js" />
+    <Content Include="Scripts\account\auth.js" />
     <Content Include="Scripts\vendor\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap.min.js" />
     <None Include="Scripts\vendor\jquery-2.2.3.intellisense.js" />
