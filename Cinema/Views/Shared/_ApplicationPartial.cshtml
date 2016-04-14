@@ -1,0 +1,17 @@
+﻿@{
+    string user = null;
+}
+@if (user != null)
+{
+    @Html.AntiForgeryToken()
+    <p>Nowe zakładki? :O</p>
+}
+else
+{
+
+    @Html.AntiForgeryToken()
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Zakładka 1", "Index", "Home")</li>
+        <li>@Html.ActionLink("Zakładka 2", "Index", "Home")</li>
+    </ul>
+}

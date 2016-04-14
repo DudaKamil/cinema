@@ -1,0 +1,19 @@
+﻿@{
+    string user = null;
+}
+
+
+@if (user != null)
+{
+    @Html.AntiForgeryToken()
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Wyloguj się", "Index", "Home")</li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Zarejestruj się", "Index", "Home")</li>
+        <li>@Html.ActionLink("Zaloguj się", "Login", "Account")</li>
+    </ul>
+}
