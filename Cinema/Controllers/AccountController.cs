@@ -21,10 +21,11 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                //sprawdź w bazie czy login i hasło jest poprawne
+             
+                // TODO: sprawdź w bazie czy login i hasło jest poprawne
                 return RedirectToAction("Index", "Home"); //domyślnie strona główna aplikacji - do zmiany
             }
-            ModelState.AddModelError("", "Błędne dane logowania.");
+//            ModelState.AddModelError("", "Błędne dane logowania.");
             return View(loginModel);
         }
 

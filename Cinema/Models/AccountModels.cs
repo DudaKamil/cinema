@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Cinema.Models
 {
@@ -15,6 +16,9 @@ namespace Cinema.Models
         [Required]
         [Display(Name = "Hasło")]
         public string Password { get; set; }
+        
+        [Display(Name = "zapamiętaj mnie")]
+        public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
