@@ -12,52 +12,59 @@
 <link href="~/Content/account/auth.css" type="text/css" rel="stylesheet"/>
 <script src="~/Scripts/account/auth.js"></script>
 
-<!-- REGISTRATION FORM -->
-<div class="text-center" style="padding: 50px 0">
-    <div class="logo">Zarejestruj się</div>
-    <!-- Main Form -->
-    <div class="login-form-1">
-        <form id="register-form" class="text-left">
-            <div class="login-form-main-message"></div>
-            <div class="main-login-form">
-                <div class="login-group">
-                    <div class="form-group">
-                        <label for="reg_username" class="sr-only">Email address</label>
-                        <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="login">
-                    </div>
-                    <div class="form-group">
-                        <label for="reg_password" class="sr-only">Password</label>
-                        <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="hasło">
-                    </div>
-                    <div class="form-group">
-                        <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                        <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="potwierdź hasło">
-                    </div>
+@using (Html.BeginForm())
+{
+    <!-- REGISTRATION FORM -->
+    <div class="text-center" style="padding: 50px 0">
+        <div class="logo">Zarejestruj się</div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="register-form" class="text-left">
+                @Html.AntiForgeryToken()
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Login, new { @class = "sr-only" })
+                            @Html.TextBoxFor(m => m.Login, new { @class = "form-control", placeholder = "login" })
 
-                    <div class="form-group">
-                        <label for="reg_email" class="sr-only">Email</label>
-                        <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="reg_fullname" class="sr-only">Full Name</label>
-                        <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="imię">
-                    </div>
+                            <label for="reg_username" class="sr-only">Email address</label>
+                            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="login">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_password" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="hasło">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="potwierdź hasło">
+                        </div>
 
-                    <div class="form-group login-group-checkbox">
-                        <input type="checkbox" class="" id="reg_agree" name="reg_agree">
-                        <label for="reg_agree">Akceptuję warunki <a href="#">regulaminu</a></label>
+                        <div class="form-group">
+                            <label for="reg_email" class="sr-only">Email</label>
+                            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_fullname" class="sr-only">Full Name</label>
+                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="imię">
+                        </div>
+
+                        <div class="form-group login-group-checkbox">
+                            <input type="checkbox" class="" id="reg_agree" name="reg_agree">
+                            <label for="reg_agree">Akceptuję warunki <a href="#">regulaminu</a></label>
+                        </div>
                     </div>
+                    <button type="submit" class="login-button">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
                 </div>
-                <button type="submit" class="login-button">
-                    <i class="fa fa-chevron-right"></i>
-                </button>
-            </div>
-            <div class="etc-login-form">
-                <p>
-                    masz już konto? <a href="/Account/Login">zaloguj się</a>
-                </p>
-            </div>
-        </form>
+                <div class="etc-login-form">
+                    <p>
+                        masz już konto? <a href="/Account/Login">zaloguj się</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <!-- end:Main Form -->
     </div>
-    <!-- end:Main Form -->
-</div>
+}

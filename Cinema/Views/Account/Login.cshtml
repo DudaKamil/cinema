@@ -19,14 +19,11 @@
 {
     <!-- LOGIN FORM -->
     <div class="text-center" style="padding: 50px 0">
-        <div class="logo">login</div>
+        <div class="logo">Zaloguj się</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            @Html.AntiForgeryToken()
-            <div class="validation-summary">
-                @Html.ValidationSummary()
-            </div>
             <form id="login-form" class="text-left">
+                @Html.AntiForgeryToken()
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">
@@ -40,20 +37,23 @@
                             @Html.TextBoxFor(m => m.Password, new {@class = "form-control", placeholder = "hasło"})
                         </div>
 
-@*                         TODO: zdecydować czy funkcja "zapamiętaj mnie" potrzebna*@
-@*                        <div class="form-group login-group-checkbox">*@
-@*                            @Html.CheckBoxFor(m => m.RememberMe)*@
-@*                            @Html.LabelFor(m => m.RememberMe)*@
-@*                            <input type="checkbox" id="lg_remember" name="lg_remember">*@
-@*                            <label for="lg_remember">zapamiętaj mnie</label>*@
-@*                        </div>*@
-                    </div>
+                        @*                         TODO: zdecydować czy funkcja "zapamiętaj mnie" potrzebna*@
+                        @*                        <div class="form-group login-group-checkbox">*@
+                        @*                            @Html.CheckBoxFor(m => m.RememberMe)*@
+                        @*                            @Html.LabelFor(m => m.RememberMe)*@
+                        @*                            <input type="checkbox" id="lg_remember" name="lg_remember">*@
+                        @*                            <label for="lg_remember">zapamiętaj mnie</label>*@
+                        @*                        </div>*@
 
+                        <div id="validation-summary">
+                            @Html.ValidationSummary()
+                        </div>
+                    </div>
                     <button type="submit" class="login-button">
                         <i class="fa fa-chevron-right"></i>
                     </button>
-
                 </div>
+
                 <div class="etc-login-form">
                     <p>
                         zapomniałeś hasła? <a href="#">kliknij tutaj</a>

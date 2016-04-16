@@ -12,10 +12,10 @@ a {
     transition: all ease-in-out 200ms;
 }
 
-    a:hover {
-        color: #333333;
-        text-decoration: none;
-    }
+a:hover {
+    color: #333333;
+    text-decoration: none;
+}
 
 /*=== 3. Text Outside the Box ===*/
 
@@ -24,9 +24,7 @@ a {
     padding: 10px 20px;
 }
 
-    .etc-login-form p {
-        margin-bottom: 5px;
-    }
+.etc-login-form p { margin-bottom: 5px; }
 
 /*=== 4. Main Form ===*/
 
@@ -36,9 +34,7 @@ a {
     max-width: 300px;
 }
 
-.main-login-form {
-    position: relative;
-}
+.main-login-form { position: relative; }
 
 .login-form-1 .form-control {
     background: transparent;
@@ -51,15 +47,11 @@ a {
     padding: 7px 0;
 }
 
-    .login-form-1 .form-control::-webkit-input-placeholder {
-        color: #999999;
-    }
+.login-form-1 .form-control::-webkit-input-placeholder { color: #999999; }
 
-    .login-form-1 .form-control:-moz-placeholder,
-    .login-form-1 .form-control::-moz-placeholder,
-    .login-form-1 .form-control:-ms-input-placeholder {
-        color: #999999;
-    }
+.login-form-1 .form-control:-moz-placeholder,
+.login-form-1 .form-control::-moz-placeholder,
+.login-form-1 .form-control:-ms-input-placeholder { color: #999999; }
 
 .login-form-1 .form-group {
     border-bottom: 2px solid #efefef;
@@ -68,9 +60,7 @@ a {
     position: relative;
 }
 
-    .login-form-1 .form-group:last-child {
-        border-bottom: 0;
-    }
+.login-form-1 .form-group:last-child { border-bottom: 0; }
 
 .login-group {
     background: #ffffff;
@@ -79,9 +69,7 @@ a {
     padding: 10px 20px;
 }
 
-.login-group-checkbox {
-    padding: 5px 0;
-}
+.login-group-checkbox { padding: 5px 0; }
 
 /*=== 5. Login Button ===*/
 
@@ -100,26 +88,18 @@ a {
     width: 50px;
 }
 
-    .login-form-1 .login-button:hover {
-        color: #555555;
-        transform: rotate(450deg);
-    }
+.login-form-1 .login-button:hover {
+    color: #555555;
+    transform: rotate(450deg);
+}
 
-    .login-form-1 .login-button.clicked {
-        color: #555555;
-    }
+.login-form-1 .login-button.clicked { color: #555555; }
 
-        .login-form-1 .login-button.clicked:hover {
-            transform: none;
-        }
+.login-form-1 .login-button.clicked:hover { transform: none; }
 
-        .login-form-1 .login-button.clicked.success {
-            color: #2ecc71;
-        }
+.login-form-1 .login-button.clicked.success { color: #2ecc71; }
 
-        .login-form-1 .login-button.clicked.error {
-            color: #e74c3c;
-        }
+.login-form-1 .login-button.clicked.error { color: #e74c3c; }
 
 /*=== 6. Form Invalid ===*/
 
@@ -138,19 +118,19 @@ label.form-invalid {
     z-index: 5;
 }
 
-    label.form-invalid:after {
-        border: solid transparent;
-        border-color: transparent;
-        border-top-color: #777777;
-        border-width: 6px;
-        content: " ";
-        height: 0;
-        pointer-events: none;
-        position: absolute;
-        right: 10px;
-        top: 100%;
-        width: 0;
-    }
+label.form-invalid:after {
+    border: solid transparent;
+    border-color: transparent;
+    border-top-color: #777777;
+    border-width: 6px;
+    content: " ";
+    height: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    top: 100%;
+    width: 0;
+}
 
 /*=== 7. Form - Main Message ===*/
 
@@ -167,19 +147,15 @@ label.form-invalid {
     transition: all ease-in-out 200ms;
 }
 
-    .login-form-main-message.show {
-        height: auto;
-        opacity: 1;
-        padding: 10px 20px 10px 17px;
-    }
+.login-form-main-message.show {
+    height: auto;
+    opacity: 1;
+    padding: 10px 20px 10px 17px;
+}
 
-    .login-form-main-message.success {
-        border-left-color: #2ecc71;
-    }
+.login-form-main-message.success { border-left-color: #2ecc71; }
 
-    .login-form-main-message.error {
-        border-left-color: #e74c3c;
-    }
+.login-form-main-message.error { border-left-color: #e74c3c; }
 
 /*=== 8. Custom Checkbox & Radio ===*/
 
@@ -193,58 +169,58 @@ label.form-invalid {
     position: absolute;
 }
 
-    [type="checkbox"]:not(:checked) + label,
-    [type="checkbox"]:checked + label,
-    [type="radio"]:not(:checked) + label,
-    [type="radio"]:checked + label {
-        cursor: pointer;
-        padding-left: 25px;
-        padding-top: 1px;
-        position: relative;
-    }
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label,
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+    cursor: pointer;
+    padding-left: 25px;
+    padding-top: 1px;
+    position: relative;
+}
 
-        /* checkbox aspect */
+/* checkbox aspect */
 
-        [type="checkbox"]:not(:checked) + label:before,
-        [type="checkbox"]:checked + label:before,
-        [type="radio"]:not(:checked) + label:before,
-        [type="radio"]:checked + label:before {
-            background: #f0f0f0;
-            border: 0px solid #aaa;
-            border-radius: 3px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-            content: '';
-            height: 17px;
-            left: 0;
-            position: absolute;
-            top: 2px;
-            width: 17px;
-        }
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:checked + label:before {
+    background: #f0f0f0;
+    border: 0px solid #aaa;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 17px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 17px;
+}
 
-        /* checked mark aspect */
+/* checked mark aspect */
 
-        [type="checkbox"]:not(:checked) + label:after,
-        [type="checkbox"]:checked + label:after,
-        [type="radio"]:not(:checked) + label:after,
-        [type="radio"]:checked + label:after {
-            color: #555555;
-            position: absolute;
-            transition: all .2s;
-        }
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after,
+[type="radio"]:checked + label:after {
+    color: #555555;
+    position: absolute;
+    transition: all .2s;
+}
 
-        /* checked mark aspect changes */
+/* checked mark aspect changes */
 
-        [type="checkbox"]:not(:checked) + label:after,
-        [type="radio"]:not(:checked) + label:after {
-            opacity: 0;
-            transform: scale(0);
-        }
+[type="checkbox"]:not(:checked) + label:after,
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+}
 
-        [type="checkbox"]:checked + label:after,
-        [type="radio"]:checked + label:after {
-            opacity: 1;
-            transform: scale(1);
-        }
+[type="checkbox"]:checked + label:after,
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+}
 
 /* disabled checkbox */
 
@@ -258,43 +234,31 @@ label.form-invalid {
 }
 
 [type="checkbox"]:disabled:checked + label:after,
-[type="radio"]:disabled:checked + label:after {
-    color: #555555;
-}
+[type="radio"]:disabled:checked + label:after { color: #555555; }
 
 [type="checkbox"]:disabled + label,
-[type="radio"]:disabled + label {
-    color: #8c8c8c;
-}
+[type="radio"]:disabled + label { color: #8c8c8c; }
 
 /* accessibility */
 
 [type="checkbox"]:checked:focus + label:before,
 [type="checkbox"]:not(:checked):focus + label:before,
 [type="checkbox"]:checked:focus + label:before,
-[type="checkbox"]:not(:checked):focus + label:before {
-    border: 1px dotted #f6f6f6;
-}
+[type="checkbox"]:not(:checked):focus + label:before { border: 1px dotted #f6f6f6; }
 
 /* hover style just for information */
 
-label:hover:before {
-    border: 1px solid #f6f6f6 !important;
-}
+label:hover:before { border: 1px solid #f6f6f6 !important; }
 
 /*=== Customization ===*/
 
 /* radio aspect */
 
 [type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-    border-radius: 3px;
-}
+[type="checkbox"]:checked + label:before { border-radius: 3px; }
 
 [type="radio"]:not(:checked) + label:before,
-[type="radio"]:checked + label:before {
-    border-radius: 35px;
-}
+[type="radio"]:checked + label:before { border-radius: 35px; }
 
 /* selected mark aspect */
 
@@ -322,4 +286,14 @@ label:hover:before {
     font-size: 25px;
     font-weight: bold;
     padding: 15px 0;
+}
+
+/* TODO: css działa przy live reload ale normalnie nie */
+#validation-summary div ul {
+    padding-top: 1em;
+    list-style-type: none;
+}
+
+#validation-summary div ul li{
+    padding-left: 1px;
 }
