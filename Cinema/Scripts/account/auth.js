@@ -9,7 +9,7 @@
         'btn-error': '<i class="fa fa-remove"></i>',
         'msg-success': "All Good! Redirecting...",
         'msg-error': "Wrong login credentials!",
-        'useAJAX': true,
+        'useAJAX': false,
     };
 
     // Login Form
@@ -27,7 +27,7 @@
     $("#login-form").submit(function() {
         remove_loading($(this));
 
-        if (options["useAJAX"] == true) {
+        if (options["useAJAX"] === true) {
             // Dummy AJAX request (Replace this with your AJAX code)
             // If you don't want to use AJAX, remove this
             dummy_submit_form($(this));
@@ -73,7 +73,7 @@
     $("#register-form").submit(function() {
         remove_loading($(this));
 
-        if (options["useAJAX"] == true) {
+        if (options["useAJAX"] === true) {
             // Dummy AJAX request (Replace this with your AJAX code)
             // If you don't want to use AJAX, remove this
             dummy_submit_form($(this));
@@ -98,7 +98,7 @@
     $("#forgot-password-form").submit(function() {
         remove_loading($(this));
 
-        if (options["useAJAX"] == true) {
+        if (options["useAJAX"] === true) {
             // Dummy AJAX request (Replace this with your AJAX code)
             // If you don't want to use AJAX, remove this
             dummy_submit_form($(this));
@@ -130,7 +130,7 @@
         $form.find(".login-form-main-message").addClass("show error").html(options["msg-error"]);
     }
 
-    // Dummy Submit Form (Remove this)
+    // TODO: Dummy Submit Form (Remove this)
     //----------------------------------------------
     // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
     function dummy_submit_form($form) {
