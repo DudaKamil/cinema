@@ -27,31 +27,32 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Login, new { @class = "sr-only" })
                             @Html.TextBoxFor(m => m.Login, new { @class = "form-control", placeholder = "login" })
-
-                            <label for="reg_username" class="sr-only">Email address</label>
-                            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="login">
                         </div>
                         <div class="form-group">
-                            <label for="reg_password" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="hasło">
+                            @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "hasło" })
                         </div>
                         <div class="form-group">
-                            <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="potwierdź hasło">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "sr-only" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "potwierdź hasło" })
                         </div>
 
                         <div class="form-group">
-                            <label for="reg_email" class="sr-only">Email</label>
-                            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+                            @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "email" })
                         </div>
                         <div class="form-group">
-                            <label for="reg_fullname" class="sr-only">Full Name</label>
-                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="imię">
+                            @Html.LabelFor(m => m.Name, new { @class = "sr-only" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "imię" })
                         </div>
 
                         <div class="form-group login-group-checkbox">
                             <input type="checkbox" class="" id="reg_agree" name="reg_agree">
                             <label for="reg_agree">Akceptuję warunki <a href="#">regulaminu</a></label>
+                        </div>
+
+                        <div id="validation-summary">
+                            @Html.ValidationSummary()
                         </div>
                     </div>
                     <button type="submit" class="login-button">

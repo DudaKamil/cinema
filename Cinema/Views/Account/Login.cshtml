@@ -34,16 +34,13 @@
 
                         <div class="form-group">
                             @Html.LabelFor(m => m.Password, new {@class = "sr-only"})
-                            @Html.TextBoxFor(m => m.Password, new {@class = "form-control", placeholder = "hasło"})
+                            @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "hasło"})
                         </div>
 
-                        @*                         TODO: zdecydować czy funkcja "zapamiętaj mnie" potrzebna*@
-                        @*                        <div class="form-group login-group-checkbox">*@
-                        @*                            @Html.CheckBoxFor(m => m.RememberMe)*@
-                        @*                            @Html.LabelFor(m => m.RememberMe)*@
-                        @*                            <input type="checkbox" id="lg_remember" name="lg_remember">*@
-                        @*                            <label for="lg_remember">zapamiętaj mnie</label>*@
-                        @*                        </div>*@
+                        <div class="form-group login-group-checkbox">
+                            <input type="checkbox" id="lg_remember" name="lg_remember">
+                            <label for="lg_remember">zapamiętaj mnie</label>
+                        </div>
 
                         <div id="validation-summary">
                             @Html.ValidationSummary()

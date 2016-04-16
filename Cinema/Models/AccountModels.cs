@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.UI.WebControls;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Models
 {
@@ -16,7 +11,7 @@ namespace Cinema.Models
         [Required]
         [Display(Name = "Hasło")]
         public string Password { get; set; }
-        
+
         [Display(Name = "zapamiętaj mnie")]
         public bool RememberMe { get; set; }
     }
@@ -36,5 +31,14 @@ namespace Cinema.Models
         [Display(Name = "Potwierdź Hasło")]
         [Compare("Password", ErrorMessage = "Hasła nie są identyczne")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
     }
 }
