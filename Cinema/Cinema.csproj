@@ -96,6 +96,7 @@
       <DependentUpon>CinemaDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="Content\account\auth.css" />
+    <Content Include="Content\Home\Index.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
     <Content Include="Content\vendor\bootstrap.css" />
@@ -112,12 +113,13 @@
     <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
     <Content Include="Scripts\account\auth.js" />
-    <Content Include="Scripts\vendor\bootstrap.js" />
-    <Content Include="Scripts\vendor\bootstrap.min.js" />
-    <None Include="Scripts\vendor\jquery-2.2.3.intellisense.js" />
-    <Content Include="Scripts\vendor\jquery-2.2.3.js" />
-    <Content Include="Scripts\vendor\jquery-2.2.3.min.js" />
-    <Content Include="Scripts\vendor\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Home\index.js" />
+    <Content Include="Views\vendor\bootstrap.js" />
+    <Content Include="Views\vendor\bootstrap.min.js" />
+    <None Include="Views\vendor\jquery-2.2.3.intellisense.js" />
+    <Content Include="Views\vendor\jquery-2.2.3.js" />
+    <Content Include="Views\vendor\jquery-2.2.3.min.js" />
+    <Content Include="Views\vendor\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +144,7 @@
     <Content Include="Views\Shared\_AccountPartial.cshtml" />
     <Content Include="Views\Shared\_ApplicationPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Scripts\vendor\jquery-2.2.3.min.map" />
+    <Content Include="Views\vendor\jquery-2.2.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +153,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\" />
     <Folder Include="Views\Application\" />
   </ItemGroup>
   <ItemGroup>
