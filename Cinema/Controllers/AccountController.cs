@@ -57,9 +57,12 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!userRepo.IsLoginFree(registerModel.Login))
+                if (!userRepo.IsLoginFree(registerModel.Login) || !userRepo.IsEmailFree(registerModel.Email))
                 {
-                    ModelState.AddModelError("", "Login jest zajęty.");
+                    if (!userRepo.IsLoginFree(registerModel.Login))
+                        ModelState.AddModelError("", "Login jest już używany.");                        
+                    if (!userRepo.IsEmailFree(registerModel.Email))                    
+                        ModelState.AddModelError("", "Email jest już używany.");                                          
                     return View(registerModel);
                 }
 

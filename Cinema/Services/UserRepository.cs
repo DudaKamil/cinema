@@ -22,5 +22,13 @@ namespace Cinema.Services
                 return true;
             return false;
         }
+
+        public bool IsEmailFree(string email)
+        {
+            if (db.Users.FirstOrDefault(u => u.Email == email) == null)
+                return true;
+            return false;
+        }
+
     }
 }
