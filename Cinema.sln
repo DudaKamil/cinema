@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DoD.txt = DoD.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{906F8C9D-1416-4FD7-9D9A-8DF82739EE8F}"
+	ProjectSection(SolutionItems) = preProject
+		EntityFramework.txt = EntityFramework.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{906F8C9D-1416-4FD7-9D9A-8DF82739EE8F} = {7EC0148E-591E-4BB3-9DA8-120449E8255C}
 	EndGlobalSection
 EndGlobal
