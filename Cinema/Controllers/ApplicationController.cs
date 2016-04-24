@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Cinema.Controllers
 {
+    [Authorize]
     public class ApplicationController : Controller
     {
         public ActionResult MainMenu()

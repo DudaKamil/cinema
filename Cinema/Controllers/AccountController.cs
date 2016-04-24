@@ -11,20 +11,18 @@ using Cinema.Services;
 
 namespace Cinema.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private CinemaContext db = new CinemaContext();
-        private  UserRepository userRepo = new UserRepository();
+        private UserRepository userRepo = new UserRepository();
 
-        // GET: Account
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
@@ -39,22 +37,18 @@ namespace Cinema.Controllers
                 User validatedUser = userRepo.GetByLoginAndPassword(user);
 
                 if (validatedUser != null)
-                {
                     FormsAuthentication.RedirectFromLoginPage(loginModel.Login, loginModel.RememberMe);
-                    //FormsAuthentication.SetAuthCookie(loginModel.Login, loginModel.RememberMe);                    
-                    //return RedirectToAction("MainMenu", "Application");
-                }
+
                 ModelState.AddModelError("", "Błędne dane logowania.");
             }
             return View(loginModel);
         }
 
 
-        [AllowAnonymous]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -72,9 +66,9 @@ namespace Cinema.Controllers
                 if (!userRepo.IsLoginFree(registerModel.Login) || !userRepo.IsEmailFree(registerModel.Email))
                 {
                     if (!userRepo.IsLoginFree(registerModel.Login))
-                        ModelState.AddModelError("", "Login jest już używany.");                        
-                    if (!userRepo.IsEmailFree(registerModel.Email))                    
-                        ModelState.AddModelError("", "Email jest już używany.");                                          
+                        ModelState.AddModelError("", "Login jest już używany.");
+                    if (!userRepo.IsEmailFree(registerModel.Email))
+                        ModelState.AddModelError("", "Email jest już używany.");
                     return View(registerModel);
                 }
 
@@ -85,7 +79,7 @@ namespace Cinema.Controllers
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
                 }
-                         
+
                 db.Users.Add(user);
                 db.SaveChanges();
 
@@ -93,6 +87,5 @@ namespace Cinema.Controllers
             }
             return View(registerModel);
         }
-
     }
 }
