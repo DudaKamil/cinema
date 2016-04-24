@@ -12,6 +12,7 @@ namespace Cinema.Controllers
     public class AccountController : Controller
     {
         private CinemaContext db = new CinemaContext();
+        private  UserRepository userRepo = new UserRepository();
 
         // GET: Account
         [HttpGet]
@@ -25,7 +26,6 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserRepository userRepo = new UserRepository();
 
                 User user = new User();
                 {
@@ -57,6 +57,12 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!userRepo.IsLoginFree(registerModel.Login))
+                {
+                    ModelState.AddModelError("", "Login jest zajęty.");
+                    return View(registerModel);
+                }
+
                 User user = new User();
                 {
                     user.Login = registerModel.Login;
@@ -64,6 +70,8 @@ namespace Cinema.Controllers
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
                 }
+
+                         
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Login", "Account");

@@ -15,5 +15,12 @@ namespace Cinema.Services
         {
             return db.Users.FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
         }
+
+        public bool IsLoginFree(string login)
+        {
+            if (db.Users.FirstOrDefault(u => u.Login == login) == null)
+                return true;
+            return false;
+        }
     }
 }
