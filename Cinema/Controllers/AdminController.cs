@@ -11,6 +11,7 @@ using Cinema.Models;
 
 namespace Cinema.Controllers
 {
+    [Authorize(Users = "admin")]
     public class AdminController : Controller
     {
         private CinemaContext db = new CinemaContext();

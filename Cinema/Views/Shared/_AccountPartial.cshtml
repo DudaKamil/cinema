@@ -1,13 +1,17 @@
 ﻿@{
-    string user = null;
+    string user = HttpContext.Current.User.Identity.Name;
 }
 
 
-@if (user != null)
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
     @Html.AntiForgeryToken()
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Wyloguj się", "Index", "Home")</li>
+        @if (user == "admin")
+        {
+            <li>@Html.ActionLink("Panel Admina", "Index", "Admin")</li>            
+        }
+        <li>@Html.ActionLink(user + " | Wyloguj się", "Logout", "Account")</li>
     </ul>
 }
 else

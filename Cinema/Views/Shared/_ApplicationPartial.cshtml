@@ -1,14 +1,13 @@
-﻿@{
-    string user = null;
-}
-@if (user != null)
+﻿@if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
     @Html.AntiForgeryToken()
-    <p>Nowe zakładki? :O</p>
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Menu", "MainMenu", "Application")</li>
+    </ul>
+
 }
 else
 {
-
     @Html.AntiForgeryToken()
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink("Repertuar", "Index", "Home")</li>

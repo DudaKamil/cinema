@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Cinema.DAL;
 using Cinema.Models;
 using Cinema.Services;
@@ -15,18 +17,19 @@ namespace Cinema.Controllers
         private  UserRepository userRepo = new UserRepository();
 
         // GET: Account
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
             {
-
                 User user = new User();
                 {
                     user.Login = loginModel.Login;
@@ -37,13 +40,22 @@ namespace Cinema.Controllers
 
                 if (validatedUser != null)
                 {
-                    return RedirectToAction("MainMenu", "Application");
+                    FormsAuthentication.RedirectFromLoginPage(loginModel.Login, loginModel.RememberMe);
+                    //FormsAuthentication.SetAuthCookie(loginModel.Login, loginModel.RememberMe);                    
+                    //return RedirectToAction("MainMenu", "Application");
                 }
                 ModelState.AddModelError("", "Błędne dane logowania.");
             }
             return View(loginModel);
         }
 
+
+        [AllowAnonymous]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","Home");
+        }
 
 
         [HttpGet]
@@ -73,10 +85,10 @@ namespace Cinema.Controllers
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
                 }
-
                          
                 db.Users.Add(user);
                 db.SaveChanges();
+
                 return RedirectToAction("Login", "Account");
             }
             return View(registerModel);
