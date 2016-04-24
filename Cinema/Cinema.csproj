@@ -99,10 +99,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CinemaDatabase.mdf" />
-    <Content Include="App_Data\CinemaDatabase_log.ldf">
-      <DependentUpon>CinemaDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\account\auth.css" />
     <Content Include="Content\Home\Index.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
@@ -122,8 +118,23 @@
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
     <Content Include="Scripts\account\auth.js" />
     <Content Include="Scripts\Home\index.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Views\vendor\bootstrap.js" />
     <Content Include="Views\vendor\bootstrap.min.js" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Application\MainMenu.cshtml" />
     <None Include="Views\vendor\jquery-2.2.3.intellisense.js" />
     <Content Include="Views\vendor\jquery-2.2.3.js" />
     <Content Include="Views\vendor\jquery-2.2.3.min.js" />
@@ -135,6 +146,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
     <Compile Include="DAL\CinemaInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +161,7 @@
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -169,8 +182,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\Application\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema", "Cinema\Cinema.csproj", "{AC16F7C1-48A7-4140-803C-B8592642DF9A}"
 EndProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{906F8C9D-1416-4FD7-9D9A-8DF82739EE8F}"
 	ProjectSection(SolutionItems) = preProject
-		EntityFramework.txt = EntityFramework.txt
+		EntityFramework.md = EntityFramework.md
 	EndProjectSection
 EndProject
 Global

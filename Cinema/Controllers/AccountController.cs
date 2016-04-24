@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Cinema.DAL;
 using Cinema.Models;
+using Cinema.Services;
 
 namespace Cinema.Controllers
 {
     public class AccountController : Controller
     {
+        private CinemaContext db = new CinemaContext();
+
         // GET: Account
         [HttpGet]
         public ActionResult Login()
@@ -21,11 +25,22 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-             
-                // TODO: sprawdź w bazie czy login i hasło jest poprawne
-                return RedirectToAction("Index", "Home"); //domyślnie strona główna aplikacji - do zmiany
+                UserRepository userRepo = new UserRepository();
+
+                User user = new User();
+                {
+                    user.Login = loginModel.Login;
+                    user.Password = loginModel.Password;
+                }
+
+                User validatedUser = userRepo.GetByLoginAndPassword(user);
+
+                if (validatedUser != null)
+                {
+                    return RedirectToAction("MainMenu", "Application");
+                }
+                ModelState.AddModelError("", "Błędne dane logowania.");
             }
-//            ModelState.AddModelError("", "Błędne dane logowania.");
             return View(loginModel);
         }
 
@@ -42,7 +57,15 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                //zapisz w bazie dane nowego użytkownika
+                User user = new User();
+                {
+                    user.Login = registerModel.Login;
+                    user.Password = registerModel.Password;
+                    user.Email = registerModel.Email;
+                    user.Name = registerModel.Name;
+                }
+                db.Users.Add(user);
+                db.SaveChanges();
                 return RedirectToAction("Login", "Account");
             }
             return View(registerModel);

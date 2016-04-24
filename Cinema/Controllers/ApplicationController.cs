@@ -9,7 +9,9 @@ namespace Cinema.Controllers
 {
     public class ApplicationController : Controller
     {
-        // GET: Application
-        // Actions here
+        public ActionResult MainMenu()
+        {
+            return View();
+        }
     }
 }
