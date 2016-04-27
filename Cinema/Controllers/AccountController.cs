@@ -34,6 +34,7 @@ namespace Cinema.Controllers
                     user.Password = loginModel.Password;
                 }
 
+
                 User validatedUser = userRepo.GetByLoginAndPassword(user);
 
                 if (validatedUser != null)
@@ -75,7 +76,7 @@ namespace Cinema.Controllers
                 User user = new User();
                 {
                     user.Login = registerModel.Login;
-                    user.Password = registerModel.Password;
+                    user.Password = userRepo.EncodePassword(registerModel.Password);
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
                 }

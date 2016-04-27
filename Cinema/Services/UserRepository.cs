@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using Cinema.DAL;
 using Cinema.Models;
 
@@ -13,7 +14,10 @@ namespace Cinema.Services
 
         public User GetByLoginAndPassword(User user)
         {
-            return db.Users.FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
+            User userData = db.Users.FirstOrDefault(u => u.Login == user.Login);
+            if(userData != null && Crypto.VerifyHashedPassword(userData.Password, user.Password))
+                    return userData;
+            return null;
         }
 
         public bool IsLoginFree(string login)
@@ -29,6 +33,12 @@ namespace Cinema.Services
                 return true;
             return false;
         }
+
+        public string EncodePassword(string password)
+        {
+            return Crypto.HashPassword(password);
+        }
+
 
     }
 }
