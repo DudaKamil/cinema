@@ -16,6 +16,9 @@ namespace Cinema.Controllers
     {
         private CinemaContext db = new CinemaContext();
 
+
+
+
         // GET: Users
         public ActionResult Index()
         {
@@ -125,5 +128,12 @@ namespace Cinema.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult AddFilm()
+        {
+            return View();
+        }
+
     }
 }

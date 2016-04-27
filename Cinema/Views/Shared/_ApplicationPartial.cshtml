@@ -1,8 +1,20 @@
-﻿@if (HttpContext.Current.User.Identity.IsAuthenticated)
+﻿@{
+    string user = HttpContext.Current.User.Identity.Name;
+}
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
     @Html.AntiForgeryToken()
     <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Menu", "MainMenu", "Application")</li>
+        @if (user == "admin")
+        {
+            <li>@Html.ActionLink("Przeglądaj Filmy", "AddFilm", "Admin")</li>
+            <li>@Html.ActionLink("Przeglądaj Użytkowników", "Index", "Admin")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Menu", "MainMenu", "Application")</li>
+        }
     </ul>
 }
 else
