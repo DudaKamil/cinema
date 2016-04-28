@@ -34,10 +34,7 @@ namespace Cinema.Controllers
                     user.Password = loginModel.Password;
                 }
 
-
-                User validatedUser = userRepo.GetByLoginAndPassword(user);
-
-                if (validatedUser != null)
+                if (userRepo.IsValidUser(user))
                     FormsAuthentication.RedirectFromLoginPage(loginModel.Login, loginModel.RememberMe);
 
                 ModelState.AddModelError("", "Błędne dane logowania.");

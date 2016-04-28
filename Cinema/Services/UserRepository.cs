@@ -12,33 +12,25 @@ namespace Cinema.Services
     {
         private CinemaContext db = new CinemaContext();
 
-        public User GetByLoginAndPassword(User user)
+        public bool IsValidUser(User user)
         {
             User userData = db.Users.FirstOrDefault(u => u.Login == user.Login);
-            if(userData != null && Crypto.VerifyHashedPassword(userData.Password, user.Password))
-                    return userData;
-            return null;
+            return userData != null && Crypto.VerifyHashedPassword(userData.Password, user.Password);
         }
 
         public bool IsLoginFree(string login)
         {
-            if (db.Users.FirstOrDefault(u => u.Login == login) == null)
-                return true;
-            return false;
+            return db.Users.FirstOrDefault(u => u.Login == login) == null;
         }
 
         public bool IsEmailFree(string email)
         {
-            if (db.Users.FirstOrDefault(u => u.Email == email) == null)
-                return true;
-            return false;
+            return db.Users.FirstOrDefault(u => u.Email == email) == null;
         }
 
         public string EncodePassword(string password)
         {
             return Crypto.HashPassword(password);
         }
-
-
     }
 }
