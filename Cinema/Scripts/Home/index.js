@@ -7,6 +7,8 @@ $(window).scroll(function (e) {
     parallax();
 });
 
+
+//Nadawanie wszystkim thumbnail jednakowej wielkości
 function equalHeight(group) {
     tallest = 0;
     group.each(function () {

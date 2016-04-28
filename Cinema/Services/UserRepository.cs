@@ -15,7 +15,7 @@ namespace Cinema.Services
         public bool IsValidUser(User user)
         {
             User userData = db.Users.FirstOrDefault(u => u.Login == user.Login);
-            return userData != null && Crypto.VerifyHashedPassword(userData.Password, user.Password);
+            return userData != null && Crypto.VerifyHashedPassword(userData.Password, user.Password); //przy logowaniu wywala wyjątek w tym miejscu ~Jędrula69
         }
 
         public bool IsLoginFree(string login)

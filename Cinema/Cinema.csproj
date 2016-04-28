@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\account\auth.css" />
+    <Content Include="Content\admin\AddFilm.css" />
     <Content Include="Content\Home\Index.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
@@ -117,6 +118,7 @@
     <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
     <Content Include="Scripts\account\auth.js" />
+    <Content Include="Scripts\admin\addFilm.js" />
     <Content Include="Scripts\Home\index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -126,8 +128,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Views\vendor\bootstrap.js" />
-    <Content Include="Views\vendor\bootstrap.min.js" />
+    <Content Include="Scripts\vendor\bootstrap.js" />
+    <Content Include="Scripts\vendor\bootstrap.min.js" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
@@ -136,10 +138,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Application\MainMenu.cshtml" />
     <Content Include="Views\Admin\AddFilm.cshtml" />
-    <None Include="Views\vendor\jquery-2.2.3.intellisense.js" />
-    <Content Include="Views\vendor\jquery-2.2.3.js" />
-    <Content Include="Views\vendor\jquery-2.2.3.min.js" />
-    <Content Include="Views\vendor\modernizr-2.8.3.js" />
+    <None Include="Scripts\vendor\jquery-2.2.3.intellisense.js" />
+    <Content Include="Scripts\vendor\jquery-2.2.3.js" />
+    <Content Include="Scripts\vendor\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\vendor\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +177,7 @@
     <Content Include="Views\Shared\_AccountPartial.cshtml" />
     <Content Include="Views\Shared\_ApplicationPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\vendor\jquery-2.2.3.min.map" />
+    <Content Include="Scripts\vendor\jquery-2.2.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,7 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="img\posters\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
