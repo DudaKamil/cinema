@@ -12,7 +12,7 @@ namespace Cinema.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(CinemaContext context)
@@ -42,9 +42,16 @@ namespace Cinema.Migrations
             {
                 new Movie
                 {
-                    Title = "Movie Title",
-                    Genre = "Movie Genre",
-                    Description = "Movie Description",
+                    Title = "Movie 1 Title",
+                    Genre = "Movie 1 Genre",
+                    Description = "Movie 1 Description",
+                    Length = 120
+                },
+                new Movie
+                {
+                    Title = "Movie 2 Title",
+                    Genre = "Movie 2 Genre",
+                    Description = "Movie 2 Description",
                     Length = 120
                 }
             };

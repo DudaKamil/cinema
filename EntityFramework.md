@@ -2,18 +2,13 @@
 2. Katalogi baz danych w których dokonujemy zmian
 	* Modele do EF - folder `Models`
 	* Przykładowe dane - plik `Migrations.Configuration.cs`
-	* Schematy bazy danych - folder `Migrations`
 3. Aktualizacja bazy danych na podstawie stworzonych schematów:
-	1. Tools -> NuGet Package Manager -> Package Manager Console
-	2. Komenda: `Update-Database`
-	3. Sprawdzamy czy baza została stworzona:
-		1. View -> Server Exploler
-		2. Data Connections
-		3. Powinna zostać stworzona baza `CinemaContext`
-		4. W `Tables` sprawdzamy czy tabele wglądają tak jak chcieliśmy
-    4. W razie problemów ręcznie skasować wszystkie tabele w bazie przez `Server Explorer`
-, a dopiero potem użyć komendy `Update-Database`
-4. Tworznie nowej migracji:
-	1. Tools -> NuGet Package Manager -> Package Manager Console
-	2. Komenda: `Add-Migration NazwaMigracji`
-    3. Nowa migracja stworzy się w folderze Migrations, `AktualnaData_Nazwa.cs`
+	1. Zmiany danych w `Migrations.Configuration.cs`
+    2. Zmiany schematów w pliku `Migrations.201604291502373_InitialMigration.cs`
+    3. Podczas uruchamianai aplikacji wszystko zostać automatycznie zmienione
+4. Ręczne zarządzanie i sprawdzanie bazy danych
+    1. `View` -> `SQL Server Object Explorer`
+    2. `(localdb)\typ_bazy`
+    3. `Databases` -> nasza baza danych
+5. Gdyby coś nie działało to ręcznie skasować bazę przez `SQL Server Object Explorer`
+    * Zaznaczyć opcję `Close existing connections`

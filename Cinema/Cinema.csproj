@@ -151,7 +151,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
-    <Compile Include="DAL\CinemaInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
