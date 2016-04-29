@@ -283,17 +283,19 @@ label:hover:before { border: 1px solid #f6f6f6 !important; }
 
 .logo {
     color: #aaaaaa;
-    font-size: 25px;
+    font-size: 2em;
     font-weight: bold;
     padding: 15px 0;
 }
 
-/* TODO: css działa przy live reload ale normalnie nie */
-#validation-summary div ul {
-    padding-top: 1em;
+.validation-summary-errors ul {
     list-style-type: none;
+    padding-top: 1em;
 }
 
-#validation-summary div ul li{
-    padding-left: 1px;
+.validation-summary-errors li {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-right: 25px;
+    text-align: center;
 }
