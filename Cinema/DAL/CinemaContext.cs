@@ -11,6 +11,7 @@ namespace Cinema.DAL
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

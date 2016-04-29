@@ -8,13 +8,13 @@ namespace Cinema.DAL
     {
         protected override void Seed(CinemaContext context)
         {
-            var users = new List<User>
-            {
-                new User {Login = "user", Password = "user", Name = "User_name", Email = "user@exmaple.com"}
-            };
-
-            users.ForEach(user => context.Users.Add(user));
-            context.SaveChanges();
+//            var users = new List<User>
+//            {
+//                new User {Login = "user", Password = "user", Name = "User_name", Email = "user@exmaple.com"}
+//            };
+//
+//            users.ForEach(user => context.Users.Add(user));
+//            context.SaveChanges();
         }
     }
 }

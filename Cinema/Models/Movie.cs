@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Drawing;
-using System.IO;
 
 namespace Cinema.Models
 {
@@ -14,21 +12,21 @@ namespace Cinema.Models
         public string Genre { get; set; }
         public string Description { get; set; }
 
-        public byte[] Poster { get; set; }
+//            MemoryStream ms = new MemoryStream();
+//        {
+//        public byte[] imageToByteArray(System.Drawing.Image imageIn)
+//
 
-        public byte[] imageToByteArray(System.Drawing.Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
-        }
-
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-
+//        public byte[] Poster { get; set; }
+//            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+//            return ms.ToArray();
+//        }
+//
+//        public Image byteArrayToImage(byte[] byteArrayIn)
+//        {
+//            MemoryStream ms = new MemoryStream(byteArrayIn);
+//            Image returnImage = Image.FromStream(ms);
+//            return returnImage;
+//        }
     }
 }
