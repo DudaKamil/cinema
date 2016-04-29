@@ -48,16 +48,26 @@ namespace Cinema.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,Login,Password,Email,Name")] User user)
+        public ActionResult Create(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
             {
+
+                User user = new User();
+                {
+                    user.Login = registerModel.Login;
+                    user.Password = registerModel.Password;
+                    user.Email = registerModel.Email;
+                    user.Name = registerModel.Name;
+
+                }
+
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(registerModel);
         }
 
         // GET: Users/Edit/5
