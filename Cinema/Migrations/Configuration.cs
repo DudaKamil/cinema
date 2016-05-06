@@ -45,6 +45,7 @@ namespace Cinema.Migrations
                     Title = "Movie 1 Title",
                     Genre = "Movie 1 Genre",
                     Description = "Movie 1 Description",
+                    ImageURL = "https://placehold.it/350x150",
                     Length = 120
                 },
                 new Movie
@@ -52,6 +53,7 @@ namespace Cinema.Migrations
                     Title = "Movie 2 Title",
                     Genre = "Movie 2 Genre",
                     Description = "Movie 2 Description",
+                    ImageURL = "https://placehold.it/350x150",
                     Length = 120
                 }
             };

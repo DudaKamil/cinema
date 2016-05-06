@@ -7,8 +7,16 @@
     2. Zmiany schematów w pliku `Migrations.201604291502373_InitialMigration.cs`
     3. Podczas uruchamianai aplikacji wszystko zostać automatycznie zmienione
 4. Ręczne zarządzanie i sprawdzanie bazy danych
-    1. `View` -> `SQL Server Object Explorer`
+    1. `View` -> `SQL Server Object Explorer`, a NIE `Server explorer`!
     2. `(localdb)\typ_bazy`
     3. `Databases` -> nasza baza danych
-5. Gdyby coś nie działało to ręcznie skasować bazę przez `SQL Server Object Explorer`
-    * Zaznaczyć opcję `Close existing connections`
+5. Gdyby coś nie działało, a pewnie nie będzie działać to:
+    1. Ręcznie skasować bazę przez `SQL Server Object Explorer`
+        1. `View` -> `SQL Server Object Explorer`, a NIE `Server explorer`!
+        2. `(localdb)\typ_bazy`
+        3. `Databases` -> nasza baza danych
+        4. Kasujemy bazę
+        5. Zaznaczyć opcję `Close existing connections`
+    2. W NuGet Package Manager console wpisujemy:
+        1. `Updata-Database` - stawia wtedy schemat bazy danych (tabele)
+        2. `Updata-Database` - drugi raz to samo polecenie, zapelnia wtedy bazę danymi
