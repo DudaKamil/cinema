@@ -24,7 +24,7 @@ namespace Cinema.Models
 
         [Required]
         [Display(Name = "Hasło")]
-        [MinLength(6, ErrorMessage = "{0} musi mieć co najmniej {1} znaków długości.")]
+        [MinLength(6, ErrorMessage = "{0} musi mieć co najmniej {1} znaków długości.")]       
         public string Password { get; set; }
 
         [Required]

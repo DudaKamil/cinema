@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\User.cs" />
@@ -178,6 +179,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Scripts\vendor\jquery-2.2.3.min.map" />
     <Content Include="Views\Admin\MovieDetails.cshtml" />
+    <Content Include="Views\Admin\MovieAdd.cshtml" />
+    <Content Include="Views\Admin\MovieEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

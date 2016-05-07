@@ -86,16 +86,12 @@ namespace Cinema.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UserEdit([Bind(Include = "UserID,Login,Password,Email,Name")] User user)
         {
             if (ModelState.IsValid)
             {
-                //db.Users.Attach(user);
                 db.Entry(user).State = EntityState.Modified;
                 db.Entry(user).Property(e => e.Password).IsModified = false;
                 db.SaveChanges();
@@ -104,7 +100,6 @@ namespace Cinema.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
         public ActionResult UserDelete(int? id)
         {
             if (id == null)
@@ -154,6 +149,62 @@ namespace Cinema.Controllers
             if (movie == null)
             {
                 return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        // GET: Users/Create
+        public ActionResult MovieAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MovieAdd(MovieModel movieModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Movie movie = new Movie();
+                {
+                    movie.Title = movieModel.Title;
+                    movie.Length = movieModel.Length;
+                    movie.Genre = movieModel.Genre;
+                    movie.ImageURL = movieModel.ImageURL;
+                    movie.Description = movieModel.Description;
+                }
+
+                db.Movies.Add(movie);
+                db.SaveChanges();
+                return RedirectToAction("MovieOverview");
+            }
+
+            return View(movieModel);
+        }
+
+        public ActionResult MovieEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MovieEdit([Bind(Include = "MovieID,Title,Length,Genre,ImageURL,Description")] Movie movie)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MovieOverview");
             }
             return View(movie);
         }

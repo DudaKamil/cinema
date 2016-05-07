@@ -6,6 +6,10 @@
 
 <h2>Przegląd Filmów</h2>
 
+
+<p>
+    @Html.ActionLink("Dodaj Film", "MovieAdd")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -39,13 +43,14 @@
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageURL)
+                <a href="@item.ImageURL">@item.ImageURL</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Szczegóły", "MovieDetails", new { id = item.MovieID })
+                @Html.ActionLink("Edytuj", "MovieEdit", new { id = item.MovieID}) |
+                @Html.ActionLink("Szczegóły", "MovieDetails", new {id = item.MovieID})
             </td>
         </tr>
     }
