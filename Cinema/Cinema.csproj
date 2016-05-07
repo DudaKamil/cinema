@@ -177,6 +177,7 @@
     <Content Include="Views\Shared\_ApplicationPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Scripts\vendor\jquery-2.2.3.min.map" />
+    <Content Include="Views\Admin\MovieDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

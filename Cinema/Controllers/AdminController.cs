@@ -119,7 +119,6 @@ namespace Cinema.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("UserDelete")]
         [ValidateAntiForgeryToken]
         public ActionResult UserDeleteConfirmed(int id)
@@ -142,8 +141,21 @@ namespace Cinema.Controllers
 
         public ActionResult MovieOverview()
         {
-            return View();
+            return View(db.Movies.ToList());
         }
 
+        public ActionResult MovieDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
     }
 }
