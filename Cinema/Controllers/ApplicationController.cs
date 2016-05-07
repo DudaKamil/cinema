@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Cinema.DAL;
+using Cinema.Models;
 
 namespace Cinema.Controllers
 {
     [Authorize]
     public class ApplicationController : Controller
     {
+
+        private CinemaContext db = new CinemaContext();
+
         public ActionResult MainMenu()
         {
             return View();
@@ -24,5 +30,25 @@ namespace Cinema.Controllers
         {
             return View();
         }
+
+        public ActionResult BuyTicket(int? movieId)
+        {
+            if (movieId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(movieId);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            BuyTicketModel buyTicketModel = new BuyTicketModel();
+            {
+                buyTicketModel.Movie = movie;
+                //tutaj czary
+            }
+            return View(buyTicketModel);
+        }
+        
     }
 }
