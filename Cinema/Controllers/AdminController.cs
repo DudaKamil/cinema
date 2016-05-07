@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Cinema.DAL;
 using Cinema.Models;
+using Cinema.Services;
 
 namespace Cinema.Controllers
 {
@@ -94,7 +95,9 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
+                //db.Users.Attach(user);
                 db.Entry(user).State = EntityState.Modified;
+                db.Entry(user).Property(e => e.Password).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
