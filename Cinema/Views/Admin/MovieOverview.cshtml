@@ -43,14 +43,15 @@
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
             <td>
-                <a href="@item.ImageURL">@item.ImageURL</a>
+                @Html.DisplayFor(modelItem => item.ImageURL)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.ActionLink("Edytuj", "MovieEdit", new { id = item.MovieID}) |
-                @Html.ActionLink("Szczegóły", "MovieDetails", new {id = item.MovieID})
+                @Html.ActionLink("Szczegóły", "MovieDetails", new { id = item.MovieID }) |
+                @Html.ActionLink("Usuń", "MovieDelete", new { id = item.MovieID })
             </td>
         </tr>
     }

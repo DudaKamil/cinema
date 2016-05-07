@@ -208,5 +208,29 @@ namespace Cinema.Controllers
             }
             return View(movie);
         }
+
+        public ActionResult MovieDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        [HttpPost, ActionName("MovieDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult MovieDeleteConfirmed(int id)
+        {
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            return RedirectToAction("MovieOverview");
+        }
     }
 }
