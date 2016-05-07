@@ -6,23 +6,15 @@
 {
     @Html.AntiForgeryToken()
     <ul class="nav navbar-nav">
-        @if (user == "admin")
-        {
-            <li>@Html.ActionLink("Przeglądaj Filmy", "MovieOverview", "Admin")</li>
-            <li>@Html.ActionLink("Przeglądaj Użytkowników", "UserOverview", "Admin")</li>
-        }
-        else
-        {
-            
-            <li>@Html.ActionLink("Menu", "MainMenu", "Application")</li>
-        }
+            <li>@Html.ActionLink("Repertuar", "Repertoire", "Application")</li>
+            <li>@Html.ActionLink("Cennik", "PriceList", "Application")</li>      
     </ul>
 }
 else
 {
     @Html.AntiForgeryToken()
     <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Repertuar", "Index", "Home")</li>
-        <li>@Html.ActionLink("Cennik", "Index", "Home")</li>
+        <li>@Html.ActionLink("Repertuar", "Repertoire", "Application")</li>
+        <li>@Html.ActionLink("Cennik", "PriceList", "Application")</li>
     </ul>
 }

@@ -163,6 +163,7 @@
     <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserRepository.cs" />
@@ -182,6 +183,9 @@
     <Content Include="Views\Admin\MovieAdd.cshtml" />
     <Content Include="Views\Admin\MovieEdit.cshtml" />
     <Content Include="Views\Admin\MovieDelete.cshtml" />
+    <Content Include="Views\Application\PriceList.cshtml" />
+    <Content Include="Views\Application\Repertoire.cshtml" />
+    <Content Include="Views\Admin\AdminPanel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

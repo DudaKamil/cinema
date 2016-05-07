@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Panel Admina";
+}
+
+<h2>Panel Admina</h2>
+<ul style="list-style-type: none">
+    <li>@Html.ActionLink("Przeglądaj Filmy", "MovieOverview", "Admin", new { @class = "btn btn-primary" })</li>
+    <li>@Html.ActionLink("Przeglądaj Użytkowników", "UserOverview", "Admin", new { @class = "btn btn-primary"})</li>
+</ul>

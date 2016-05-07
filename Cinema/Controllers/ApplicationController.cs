@@ -14,5 +14,15 @@ namespace Cinema.Controllers
         {
             return View();
         }
+
+        public ActionResult Repertoire()
+        {
+            return View();
+        }
+
+        public ActionResult PriceList()
+        {
+            return View();
+        }
     }
 }

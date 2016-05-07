@@ -17,6 +17,12 @@ namespace Cinema.Controllers
     {
         private CinemaContext db = new CinemaContext();
 
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
+
         // GET: Users
         public ActionResult UserOverview()
         {
