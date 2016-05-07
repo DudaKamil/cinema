@@ -4,386 +4,384 @@
     ViewBag.Title = "Przeglądaj Filmy";
 }
 
-<h2>Przegląd Filmów</h2>
-
-
-<p>
-    @Html.ActionLink("Dodaj Film", "MovieAdd")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Length)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Length)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edytuj", "MovieEdit", new { id = item.MovieID}) |
-                @Html.ActionLink("Szczegóły", "MovieDetails", new { id = item.MovieID }) |
-                @Html.ActionLink("Usuń", "MovieDelete", new { id = item.MovieID })
-            </td>
-        </tr>
-    }
-</table>
-
-
-@* Pięknie, ale teraz proszę to podpiąć pod razorka :) ~R.Pasternak
-
-
 
 <link href="~/Content/admin/AddFilm.css" type="text/css" rel="stylesheet" />
-<script src="~/Scripts/admin/addFilm.js"></script>
+
 <div class="container">
     <div class="row">
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Zarządzaj repertuarem</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-xs-12 col-md-12 ">
-                            <!-- image-preview-filename input [CUT FROM HERE]-->
-                            <div class="input-group image-preview">
-                                <input type="text" class="form-control image-preview-filename"> <!-- don't give a name === doesn't send on POST/GET -->
-                                <span class="input-group-btn">
-                                    <!-- image-preview-clear button -->
-                                    <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
-                                        <span class="fa fa-times"></span> Clear
-                                    </button>
-                                    <!-- image-preview-input -->
-                                    <div class="btn btn-default image-preview-input">
-                                        <span class="fa fa-folder-open"></span>
-                                        <span class="image-preview-input-title">Wybierz plakat</span>
-                                        <input type="file" id="fileName" accept="image/png, image/jpeg" name="input-file-preview" /> <!-- rename it -->
-                                    </div>
-
-                                </span>
-
-                            </div><!-- /input-group image-preview [TO HERE]-->
-
-
+        <div class="col-md-12">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h2>Przegląd Filmów</h2>
                         </div>
-                        <br>
-
-                        <div class="form-group" style="margin-top: 15px;">
-
-                            <div class="col-xs-6 col-md-6 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Tytuł filmu</label>
-                                <div class="input-group">
-                                    <input type="text" id="movieTitle" class="form-control" placeholder="Wprowadź tytuł filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-md-6 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Czas trwania</label>
-                                <div class="input-group">
-                                    <input type="number" id="duration" class="form-control" placeholder="Wprowadź czas trwania filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Gatunek</label>
-                                <div class="input-group">
-                                    <input type="text" id="genre" class="form-control" placeholder="Wprowadź gatunki filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Opis</label>
-                                <div class="input-group">
-                                    <textarea style="width: 100%;" rows="2" class="form-control" placeholder="Wprowadź opis filmu"></textarea>
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
+                        <div class="col col-xs-6 text-right">
+                            @Html.ActionLink("Dodaj Film", "MovieAdd", null, new { @class = "btn btn-sm btn-primary btn-create" })
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                        <button id="saveChanges" type="button" class="btn btn-primary">Zapisz zmiany</button>
-                    </div>
+                </div>
+                <div class="panel-body">
+                    <table id="moviesTable" class="table table-striped table-bordered table-list">
+                        <thead>
+                            <tr>
+
+                                <th class="hidden-xs">ID</th>
+                                <th class="text-center">Plakat</th>
+                                <th class="text-center">Tytuł</th>
+                                <th class="hidden-xs text-center">Gatunek</th>
+                                <th class="text-center">Czas trwania</th>
+                                <th class="text-center">Opis</th>
+                                <th class="text-center"><em class="fa fa-cog"></em></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="@item.MovieID">
+                                    <td class="hidden-xs text-center">@item.MovieID</td>
+                                    <td><a href="@item.ImageURL">@item.ImageURL</a></td>
+                                    <td class="hidden-xs">@item.Title</td>
+                                    <td>@item.Genre</td>
+                                    <td>@item.Length min.</td>
+                                    <td align="center">
+                                            @Html.ActionLink(" ", "MovieDetails", new { id = item.MovieID }, new { @class = "btn btn-default fa fa-eye" })
+                                    </td>
+                                    <td align="center">
+                                            @Html.ActionLink(" ", "MovieEdit", new { id = item.MovieID }, new { @class = "btn btn-default fa fa-pencil" })
+                                            @Html.ActionLink(" ", "MovieDelete", new { id = item.MovieID }, new { @class = "btn btn-danger fa fa-trash" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!--Edit table-->
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+@*<link href="~/Content/admin/AddFilm.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/admin/addFilm.js"></script>
+    <div class="container">
+        <div class="row">
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Zarządzaj repertuarem</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-xs-12 col-md-12 ">
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="input-group image-preview">
+                                    <input type="text" class="form-control image-preview-filename"> <!-- don't give a name === doesn't send on POST/GET -->
+                                    <span class="input-group-btn">
+                                        <!-- image-preview-clear button -->
+                                        <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
+                                            <span class="fa fa-times"></span> Clear
+                                        </button>
+                                        <!-- image-preview-input -->
+                                        <div class="btn btn-default image-preview-input">
+                                            <span class="fa fa-folder-open"></span>
+                                            <span class="image-preview-input-title">Wybierz plakat</span>
+                                            <input type="file" id="fileName" accept="image/png, image/jpeg" name="input-file-preview" /> <!-- rename it -->
+                                        </div>
+
+                                    </span>
+
+                                </div><!-- /input-group image-preview [TO HERE]-->
+
+
+                            </div>
+                            <br>
+
+                            <div class="form-group" style="margin-top: 15px;">
+
+                                <div class="col-xs-6 col-md-6 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Tytuł filmu</label>
+                                    <div class="input-group">
+                                        <input type="text" id="movieTitle" class="form-control" placeholder="Wprowadź tytuł filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-md-6 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Czas trwania</label>
+                                    <div class="input-group">
+                                        <input type="number" id="duration" class="form-control" placeholder="Wprowadź czas trwania filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Gatunek</label>
+                                    <div class="input-group">
+                                        <input type="text" id="genre" class="form-control" placeholder="Wprowadź gatunki filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Opis</label>
+                                    <div class="input-group">
+                                        <textarea style="width: 100%;" rows="2" class="form-control" placeholder="Wprowadź opis filmu"></textarea>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                            <button id="saveChanges" type="button" class="btn btn-primary">Zapisz zmiany</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Edit table-->
+            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-times" aria-hidden="true"></span></button>
+                            <h4 class="modal-title custom_align" id="Heading">Edycja filmu</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-xs-12 col-md-12 ">
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="input-group image-preview">
+                                    <input type="text" class="form-control image-preview-filename"> <!-- don't give a name === doesn't send on POST/GET -->
+                                    <span class="input-group-btn">
+                                        <!-- image-preview-clear button -->
+                                        <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
+                                            <span class="fa fa-times"></span> Clear
+                                        </button>
+                                        <!-- image-preview-input -->
+                                        <div class="btn btn-default image-preview-input">
+                                            <span class="fa fa-folder-open"></span>
+                                            <span class="image-preview-input-title">Wybierz plakat</span>
+                                            <input type="file" id="fileName" accept="image/png, image/jpeg" name="input-file-preview" /> <!-- rename it -->
+                                        </div>
+
+                                    </span>
+
+                                </div><!-- /input-group image-preview [TO HERE]-->
+
+
+                            </div>
+                            <br>
+
+                            <div class="form-group" style="margin-top: 15px;">
+
+                                <div class="col-xs-6 col-md-6 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Tytuł filmu</label>
+                                    <div class="input-group">
+                                        <input type="text" id="movieTitle" class="form-control" placeholder="Wprowadź tytuł filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-md-6 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Czas trwania</label>
+                                    <div class="input-group">
+                                        <input type="number" id="duration" class="form-control" placeholder="Wprowadź czas trwania filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Gatunek</label>
+                                    <div class="input-group">
+                                        <input type="text" id="genre" class="form-control" placeholder="Wprowadź gatunki filmu" aria-describedby="basic-addon2">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 ">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <label style="line-height: 2.5em;">Opis</label>
+                                    <div class="input-group">
+                                        <textarea style="width: 100%;" rows="2" class="form-control" placeholder="Wprowadź opis filmu"></textarea>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary btn-lg" style="width: 100%;"><span class="icon-ok" aria-hidden="true"></span> Aktualizuj</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
+
+
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-times" aria-hidden="true"></span></button>
-                        <h4 class="modal-title custom_align" id="Heading">Edycja filmu</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="col-xs-12 col-md-12 ">
-                            <!-- image-preview-filename input [CUT FROM HERE]-->
-                            <div class="input-group image-preview">
-                                <input type="text" class="form-control image-preview-filename"> <!-- don't give a name === doesn't send on POST/GET -->
-                                <span class="input-group-btn">
-                                    <!-- image-preview-clear button -->
-                                    <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
-                                        <span class="fa fa-times"></span> Clear
-                                    </button>
-                                    <!-- image-preview-input -->
-                                    <div class="btn btn-default image-preview-input">
-                                        <span class="fa fa-folder-open"></span>
-                                        <span class="image-preview-input-title">Wybierz plakat</span>
-                                        <input type="file" id="fileName" accept="image/png, image/jpeg" name="input-file-preview" /> <!-- rename it -->
-                                    </div>
 
-                                </span>
-
-                            </div><!-- /input-group image-preview [TO HERE]-->
-
-
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?
                         </div>
-                        <br>
 
-                        <div class="form-group" style="margin-top: 15px;">
-
-                            <div class="col-xs-6 col-md-6 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Tytuł filmu</label>
-                                <div class="input-group">
-                                    <input type="text" id="movieTitle" class="form-control" placeholder="Wprowadź tytuł filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-md-6 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Czas trwania</label>
-                                <div class="input-group">
-                                    <input type="number" id="duration" class="form-control" placeholder="Wprowadź czas trwania filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Gatunek</label>
-                                <div class="input-group">
-                                    <input type="text" id="genre" class="form-control" placeholder="Wprowadź gatunki filmu" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12 ">
-                                <!-- image-preview-filename input [CUT FROM HERE]-->
-                                <label style="line-height: 2.5em;">Opis</label>
-                                <div class="input-group">
-                                    <textarea style="width: 100%;" rows="2" class="form-control" placeholder="Wprowadź opis filmu"></textarea>
-                                    <span class="input-group-addon"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
                     </div>
                     <div class="modal-footer ">
-                        <button type="button" class="btn btn-primary btn-lg" style="width: 100%;"><span class="icon-ok" aria-hidden="true"></span> Aktualizuj</button>
+                        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
+            <!--/Edit table-->
 
+            <div class="col-md-12">
 
-
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                    <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
-                </div>
-                <div class="modal-body">
-
-                    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?
-                    </div>
-
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-        <!--/Edit table-->
-
-        <div class="col-md-12">
-
-        <div class="panel panel-default panel-table">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col col-xs-6">
-                        <h3 class="panel-title">Przegląd repertuaru</h3>
-                    </div>
-                    <div class="col col-xs-6 text-right">
-                        <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#myModal">Dodaj film</button>
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Przegląd repertuaru</h3>
+                        </div>
+                        <div class="col col-xs-6 text-right">
+                            <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#myModal">Dodaj film</button>
+                        </div>
                     </div>
                 </div>
+                <div class="panel-body">
+                    <table id="moviesTable" class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+
+                            <th class="hidden-xs">ID</th>
+                            <th class="text-center">Plakat</th>
+                            <th class="text-center">Tytuł</th>
+                            <th class="hidden-xs text-center">Gatunek</th>
+                            <th class="text-center">Czas trwania</th>
+                            <th class="text-center">Opis</th>
+                            <th class="text-center"><em class="fa fa-cog"></em></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr id="movie1">
+                            <td class="hidden-xs text-center">1</td>
+                            <td><a href="~/img/posters/TheJungleBook.jpg">TheJungleBook.jpg</a></td>
+                            <td class="hidden-xs">Księga dżungli</td>
+                            <td>Przygodowy</td>
+                            <td>105 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie1" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        <tr id="movie2">
+                            <td class="hidden-xs text-center">2</td>
+                            <td><a href="~/img/posters/Zootopia.jpg">Zootopia.jpg</a></td>
+                            <td>Zwierzogród</td>
+                            <td class="hidden-xs">Animacja, Komedia, Przygodowy</td>
+                            <td>108 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie2" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        <tr id="movie3">
+                            <td class="hidden-xs text-center">3</td>
+                            <td><a href="~/img/posters/BatmanVsSuperman.jpg">BatmanVsSuperman.jpg</a></td>
+                            <td>Batman v Superman: Świt sprawiedliwości</td>
+                            <td class="hidden-xs">Akcja, Sci-Fi</td>
+                            <td>151 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie3" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        <tr id="movie4">
+                            <td class="hidden-xs text-center">4</td>
+                            <td><a href="~/img/posters/5thWave.jpg">5thWave.jpg</a></td>
+                            <td>Piąta fala</td>
+                            <td class="hidden-xs">Przygodowy, Thriller, Sci-Fi</td>
+                            <td>112 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie4" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        <tr id="movie5">
+                            <td class="hidden-xs text-center">5</td>
+                            <td><a href="~/img/posters/TheHuntsman.jpg">TheHuntsman.jpg</a></td>
+                            <td>Łowca i królowa lodu</td>
+                            <td class="hidden-xs">Fantasy, Przygodowy</td>
+                            <td>154 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie5" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        <tr id="movie6">
+                            <td class="hidden-xs text-center">6</td>
+                            <td><a href="~/img/posters/OtherSideOfDoor.jpg">OtherSideOfDoor.jpg</a></td>
+                            <td>Po tamtej stronie drzwi</td>
+                            <td class="hidden-xs">Horror</td>
+                            <td>96 min.</td>
+                            <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
+                            <td align="center">
+                                <a data-toggle="tooltip" title="Edit">
+                                    <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                </a>
+                                <a id="removeMovie6" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-            <div class="panel-body">
-                <table id="moviesTable" class="table table-striped table-bordered table-list">
-                    <thead>
-                    <tr>
 
-                        <th class="hidden-xs">ID</th>
-                        <th class="text-center">Plakat</th>
-                        <th class="text-center">Tytuł</th>
-                        <th class="hidden-xs text-center">Gatunek</th>
-                        <th class="text-center">Czas trwania</th>
-                        <th class="text-center">Opis</th>
-                        <th class="text-center"><em class="fa fa-cog"></em></th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr id="movie1">
-                        <td class="hidden-xs text-center">1</td>
-                        <td><a href="~/img/posters/TheJungleBook.jpg">TheJungleBook.jpg</a></td>
-                        <td class="hidden-xs">Księga dżungli</td>
-                        <td>Przygodowy</td>
-                        <td>105 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie1" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    <tr id="movie2">
-                        <td class="hidden-xs text-center">2</td>
-                        <td><a href="~/img/posters/Zootopia.jpg">Zootopia.jpg</a></td>
-                        <td>Zwierzogród</td>
-                        <td class="hidden-xs">Animacja, Komedia, Przygodowy</td>
-                        <td>108 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie2" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    <tr id="movie3"> 
-                        <td class="hidden-xs text-center">3</td>
-                        <td><a href="~/img/posters/BatmanVsSuperman.jpg">BatmanVsSuperman.jpg</a></td>
-                        <td>Batman v Superman: Świt sprawiedliwości</td>
-                        <td class="hidden-xs">Akcja, Sci-Fi</td>
-                        <td>151 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie3" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    <tr id="movie4">
-                        <td class="hidden-xs text-center">4</td>
-                        <td><a href="~/img/posters/5thWave.jpg">5thWave.jpg</a></td>
-                        <td>Piąta fala</td>
-                        <td class="hidden-xs">Przygodowy, Thriller, Sci-Fi</td>
-                        <td>112 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie4" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    <tr id="movie5">
-                        <td class="hidden-xs text-center">5</td>
-                        <td><a href="~/img/posters/TheHuntsman.jpg">TheHuntsman.jpg</a></td>
-                        <td>Łowca i królowa lodu</td>
-                        <td class="hidden-xs">Fantasy, Przygodowy</td>
-                        <td>154 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie5" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    <tr id="movie6">
-                        <td class="hidden-xs text-center">6</td>
-                        <td><a href="~/img/posters/OtherSideOfDoor.jpg">OtherSideOfDoor.jpg</a></td>
-                        <td>Po tamtej stronie drzwi</td>
-                        <td class="hidden-xs">Horror</td>
-                        <td>96 min.</td>
-                        <td align="center"><a class="btn btn-default"><em class="fa fa-eye"></em></a></td>
-                        <td align="center">
-                            <a data-toggle="tooltip" title="Edit">
-                                <button class="btn btn-default" data-title="Edit" data-toggle="modal" data-target="#edit">
-                                    <span class="fa fa-pencil"></span>
-                                </button>
-                            </a>
-                            <a id="removeMovie6" class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
         </div>
 
-    </div>
-        
-    </div>
-</div>
-
-Koniec komentarza *@
+        </div>
+    </div>*@
