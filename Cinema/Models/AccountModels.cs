@@ -38,7 +38,7 @@ namespace Cinema.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Imię")]
         public string Name { get; set; }
     }
 }
