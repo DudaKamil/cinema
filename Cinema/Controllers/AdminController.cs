@@ -18,13 +18,13 @@ namespace Cinema.Controllers
         private CinemaContext db = new CinemaContext();
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult UserOverview()
         {
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult UserDetails(int? id)
         {
             if (id == null)
             {
@@ -39,7 +39,7 @@ namespace Cinema.Controllers
         }
 
         // GET: Users/Create
-        public ActionResult Create()
+        public ActionResult UserAdd()
         {
             return View();
         }
@@ -49,7 +49,7 @@ namespace Cinema.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RegisterModel registerModel)
+        public ActionResult UserAdd(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
             {
@@ -65,14 +65,14 @@ namespace Cinema.Controllers
 
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserOverview");
             }
 
             return View(registerModel);
         }
 
         // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult UserEdit(int? id)
         {
             if (id == null)
             {
@@ -91,7 +91,7 @@ namespace Cinema.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,Login,Password,Email,Name")] User user)
+        public ActionResult UserEdit([Bind(Include = "UserID,Login,Password,Email,Name")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -99,13 +99,13 @@ namespace Cinema.Controllers
                 db.Entry(user).State = EntityState.Modified;
                 db.Entry(user).Property(e => e.Password).IsModified = false;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserOverview");
             }
             return View(user);
         }
 
         // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult UserDelete(int? id)
         {
             if (id == null)
             {
@@ -120,14 +120,14 @@ namespace Cinema.Controllers
         }
 
         // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("UserDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult UserDeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("UserOverview");
         }
 
         protected override void Dispose(bool disposing)

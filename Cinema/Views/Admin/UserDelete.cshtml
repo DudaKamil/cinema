@@ -1,11 +1,12 @@
 ﻿@model Cinema.Models.User
 
 @{
-    ViewBag.Title = "Szczegóły Użytkownika";
+    ViewBag.Title = "Usuń Użytkownika";
 }
 
-<h2>Szczegóły</h2>
+<h2>Usuń</h2>
 
+<h3>Jesteś pewien, że chcesz to usunąć?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -34,8 +35,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do Przeglądu", "UserOverview")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.UserID }) | 
-    @Html.ActionLink("Powrót do Przeglądu", "Index")
-</p>

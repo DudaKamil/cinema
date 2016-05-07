@@ -7,7 +7,7 @@
 <h2>Przegląd Użytkowników</h2>
 
 <p>
-    @Html.ActionLink("Dodaj Użytkownika", "Create")
+    @Html.ActionLink("Dodaj Użytkownika", "UserAdd")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Szczegóły", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Usuń", "Delete", new { id=item.UserID })
+            @Html.ActionLink("Edytuj", "UserEdit", new { id=item.UserID }) |
+            @Html.ActionLink("Szczegóły", "UserDetails", new { id=item.UserID }) |
+            @Html.ActionLink("Usuń", "UserDelete", new { id=item.UserID })
         </td>
     </tr>
 }

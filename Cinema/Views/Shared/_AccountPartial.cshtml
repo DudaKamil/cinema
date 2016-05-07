@@ -9,7 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
         @if (user == "admin")
         {
-            <li>@Html.ActionLink("Panel Admina", "Index", "Admin")</li>            
+            <li>@Html.ActionLink("Panel Admina", "UserOverview", "Admin")</li>            
         }
         <li>@Html.ActionLink(user + " | Wyloguj się", "Logout", "Account")</li>
     </ul>
