@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 using System.Web.Helpers;
 using Cinema.DAL;
 using Cinema.Models;
@@ -59,6 +61,31 @@ namespace Cinema.Migrations
             };
 
             movies.ForEach(movie => context.Movies.AddOrUpdate(movie));
+            context.SaveChanges();
+
+            var seances = new List<Seance>
+            {
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    Type = "standard",
+                    ShowDate = DateTime.Today.AddDays(14).AddHours(1)
+                },
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    Type = "standard",
+                    ShowDate = DateTime.Today.AddDays(14).AddHours(2)
+                },
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    Type = "standard",
+                    ShowDate = DateTime.Today.AddDays(14).AddHours(3)
+                }
+            };
+
+            seances.ForEach(seance => context.Seances.AddOrUpdate(seance));
             context.SaveChanges();
         }
     }
