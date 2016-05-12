@@ -27,3 +27,14 @@ body .container-fluid .jumbotron {
   color: #f5f5f5;
 
 }
+
+.thumbnail-footer {
+   position: absolute;
+    bottom: 10px;
+    
+}
+
+.thumbnail {
+    padding-bottom: 40px;
+}
+
