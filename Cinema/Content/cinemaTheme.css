@@ -76,3 +76,8 @@
 .navbar.navbar-default .dropdown-menu .active > a:focus {
   color: rgba(255,255,255, 0.84);
 }
+
+.btn:not(.btn-raised).btn-primary,
+.input-group-btn .btn:not(.btn-raised).btn-primary {
+    color: #3F729B;
+}
