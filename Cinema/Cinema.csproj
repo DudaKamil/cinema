@@ -101,7 +101,9 @@
   <ItemGroup>
     <Content Include="Content\account\auth.css" />
     <Content Include="Content\admin\AddFilm.css" />
+    <Content Include="Content\cinemaTheme.css" />
     <Content Include="Content\Home\Index.css" />
+    <Content Include="Content\vendor\bootstrap-slate.min.css" />
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
     <Content Include="Content\vendor\bootstrap.css" />
@@ -130,6 +132,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\vendor\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap.min.js" />
+    <Content Include="Scripts\vendor\index.js" />
+    <Content Include="Scripts\vendor\material.js" />
+    <Content Include="Scripts\vendor\ripples.js" />
     <Content Include="Views\Admin\UserAdd.cshtml" />
     <Content Include="Views\Admin\UserDelete.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />

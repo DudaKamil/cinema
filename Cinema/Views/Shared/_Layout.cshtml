@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <script src="~/Scripts/vendor/modernizr-2.8.3.js"></script>
     <script src="~/Scripts/vendor/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/vendor/bootstrap.min.js"></script>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
 
     <!-- Material Design fonts -->
@@ -16,11 +17,18 @@
     <!-- Bootstrap Material Design -->
     <link href="~/Content/vendor/bootstrap-material-design.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="~/Content/vendor/ripples.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/cinemaTheme.css">
+
+
     <meta name="description" content="System obsługi kina"/>
 </head>
 <body>
+
+
+
 <div class="navbar navbar navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -29,7 +37,7 @@
             </button>
             @Html.ActionLink("Cinema", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
             @Html.Partial("_ApplicationPartial")
             @Html.Partial("_AccountPartial")
         </div>
@@ -42,8 +50,8 @@
         <p>&copy; @DateTime.Now.Year - Cinema</p>
     </footer>
 </div>
-<script src="~/Scripts/vendor/bootstrap.min.js"></script>
-
+<script src="~/Scripts/vendor/material.js"></script>
+<script src="~/Scripts/vendor/ripples.js"></script>
 
 </body>
 </html>
