@@ -10,12 +10,12 @@ using Cinema.Models;
 
 namespace Cinema.Controllers
 {
-    [Authorize]
     public class ApplicationController : Controller
     {
 
         private CinemaContext db = new CinemaContext();
 
+        [Authorize]
         public ActionResult MainMenu()
         {
             return View();
@@ -31,6 +31,7 @@ namespace Cinema.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult BuyTicket(int? movieId)
         {
             if (movieId == null)
