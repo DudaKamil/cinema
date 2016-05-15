@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Cinema.Models.Seance>
+
+@{
+    ViewBag.Title = "Przegląd Seansów";
+}
+
+
+<h2>Przegląd Seansów</h2>
+
+<p>
+    @Html.ActionLink("Dodaj Seans", "SeanceAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                <p>shiiieeet</p>
+            </td>
+        </tr>
+    }
+
+</table>

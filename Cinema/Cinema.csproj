@@ -194,6 +194,7 @@
     <Content Include="Views\Admin\AdminPanel.cshtml" />
     <Content Include="Views\Application\BuyTicket.cshtml" />
     <Content Include="Views\Admin\SeanceAdd.cshtml" />
+    <Content Include="Views\Admin\SeanceOverview.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

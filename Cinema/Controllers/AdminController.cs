@@ -264,5 +264,10 @@ namespace Cinema.Controllers
 
             return View(seanceModel);
         }
+
+        public ActionResult SeanceOverview()
+        {
+            return View(db.Seances.ToList());
+        }
     }
 }
