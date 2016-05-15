@@ -1,0 +1,103 @@
+﻿@model Cinema.Models.OrderDetailsModel
+
+@{
+    ViewBag.Title = "Szczegóły Zamówienia";
+    var currency = "zł";
+}
+
+<h2>Szczegóły Zamówienia</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NormalTicket)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NormalTicket)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReducedTicket)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReducedTicket)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cost)@currency
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketCode)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót do Podsumowania", "OrderSummary")
+</p>

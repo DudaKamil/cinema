@@ -15,7 +15,7 @@ namespace Cinema.Models
         [DisplayName("Typ")]
         public string Type { get; set; }
 
-        [DisplayName("Data")]
+        [DisplayName("Data Seansu")]
         public DateTime ShowDate { get; set; }
     }
 }

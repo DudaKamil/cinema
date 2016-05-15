@@ -30,5 +30,10 @@ namespace Cinema.Services
             return movie.Title;
         }
 
+        public Movie GetMovie(int id)
+        {
+            return db.Movies.FirstOrDefault(u => u.MovieID == id);
+        }
+
     }
 }

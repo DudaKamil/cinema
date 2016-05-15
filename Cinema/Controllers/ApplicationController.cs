@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -102,5 +103,40 @@ namespace Cinema.Controllers
             return View(orderRepo.GetUserOrdersList(userRepo.GetUser(HttpContext.User.Identity.Name).UserID));
         }
 
+        
+
+
+        [Authorize]
+        public ActionResult OrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            Seance seance = seanceRepo.GetSeance(order.SeanceID);
+            Movie movie = movieRepo.GetMovie(seance.MovieID);
+            BuyTicketModel buyTicket = new BuyTicketModel();
+            OrderDetailsModel orderDetailsModel = new OrderDetailsModel()
+            {
+             Title = movie.Title,
+             Genre = movie.Genre,
+             Length = movie.Length,
+             ImageURL = movie.ImageURL,
+             Description = movie.Description,
+             ShowDate = seance.ShowDate,
+             Type = seance.Type,
+             OrderDate = order.OrderDate,
+             NormalTicket = order.NormalTicket,
+             ReducedTicket = order.ReducedTicket,
+             Cost = buyTicket.GetTicketsCost(order.NormalTicket, order.ReducedTicket, seance.Type),
+             TicketCode = order.TicketCode
+        };
+            return View(orderDetailsModel);
+        }
     }
 }
