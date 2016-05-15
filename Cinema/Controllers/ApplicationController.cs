@@ -123,6 +123,7 @@ namespace Cinema.Controllers
             BuyTicketModel buyTicket = new BuyTicketModel();
             OrderDetailsModel orderDetailsModel = new OrderDetailsModel()
             {
+                OrderID = id,
              Title = movie.Title,
              Genre = movie.Genre,
              Length = movie.Length,
@@ -138,5 +139,29 @@ namespace Cinema.Controllers
         };
             return View(orderDetailsModel);
         }
+        public ActionResult OrderDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        [HttpPost, ActionName("OrderDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult OrderDeleteConfirmed(int id)
+        {
+            Order order = db.Orders.Find(id);
+            db.Orders.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("OrderSummary");
+        }
+
     }
 }

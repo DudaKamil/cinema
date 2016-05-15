@@ -204,6 +204,7 @@
     <Content Include="Views\Application\BuyTicket.cshtml" />
     <Content Include="Views\Application\OrderSummary.cshtml" />
     <Content Include="Views\Application\OrderDetails.cshtml" />
+    <Content Include="Views\Application\OrderDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

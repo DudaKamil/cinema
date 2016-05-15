@@ -27,6 +27,8 @@ namespace Cinema.Models
 
     public class OrderDetailsModel
     {
+        public int? OrderID { get; set; }
+
         [DisplayName("Tytuł")]
         public string Title { get; set; }
 

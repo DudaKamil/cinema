@@ -40,7 +40,7 @@
             </td>
             <td>
                 @Html.ActionLink("Szczegóły", "OrderDetails", new { id = item.OrderID}) |
-                @Html.ActionLink("Anuluj Zamówienie", "MovieDetails", new { id = item.UserID })
+                @Html.ActionLink("Anuluj Zamówienie", "OrderDelete", new { id = item.OrderID })
             </td>
         </tr>
     }

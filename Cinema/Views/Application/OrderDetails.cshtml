@@ -99,5 +99,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Powrót do Podsumowania", "OrderSummary")
+    @Html.ActionLink("Powrót do Podsumowania", "OrderSummary") |
+    @Html.ActionLink("Anuluj Zamówienie", "OrderDelete", new { id = Model.OrderID })
 </p>
