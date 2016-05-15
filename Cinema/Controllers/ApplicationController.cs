@@ -27,6 +27,30 @@ namespace Cinema.Controllers
             return View();
         }
 
+        public ActionResult MovieDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            MovieDetailsModel movieDetailsModel = new MovieDetailsModel()
+            {
+                Title = movie.Title,
+                Genre = movie.Genre,
+                Length = movie.Length,
+                ImageURL = movie.ImageURL,
+                Description = movie.Description,
+                SeancesList = seanceRepo.GetSeancesList(id)               
+            };
+            return View(movieDetailsModel);
+        }
+
         [Authorize]
         public ActionResult SelectSeance(int? id)
         {
@@ -36,6 +60,8 @@ namespace Cinema.Controllers
             }
             return View(seanceRepo.GetSeancesList(id));
         }
+
+
         
     }
 }

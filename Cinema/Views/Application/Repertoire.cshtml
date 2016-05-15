@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Length)
             </td>
             <td>
-                @Html.ActionLink("Szczegóły Filmu", "Index", "Home") |
+                @Html.ActionLink("Szczegóły Filmu", "MovieDetails", new { id = item.MovieID }) |
                 @Html.ActionLink("Wybierz Seans", "SelectSeance", new { id = item.MovieID })
             </td>
 

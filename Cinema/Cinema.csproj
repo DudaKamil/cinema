@@ -198,6 +198,7 @@
     <Content Include="Views\Admin\SeanceDetails.cshtml" />
     <Content Include="Views\Admin\SeanceEdit.cshtml" />
     <Content Include="Views\Admin\SeanceDelete.cshtml" />
+    <Content Include="Views\Application\MovieDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
