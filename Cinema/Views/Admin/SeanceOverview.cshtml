@@ -37,7 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                <p>shiiieeet</p>
+                @Html.ActionLink("Edytuj", "SeanceEdit", new { id = item.SeanceID }) |
+                @Html.ActionLink("Szczegóły", "SeanceDetails", new { id = item.SeanceID }) |
+                @Html.ActionLink("Usuń", "SeanceDelete", new { id = item.SeanceID })
             </td>
         </tr>
     }

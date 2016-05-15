@@ -311,5 +311,29 @@ namespace Cinema.Controllers
             return View(seance);
         }
 
+        public ActionResult SeanceDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Seance seance = db.Seances.Find(id);
+            if (seance == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seance);
+        }
+
+        [HttpPost, ActionName("SeanceDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SeanceDeleteConfirmed(int id)
+        {
+            Seance seance = db.Seances.Find(id);
+            db.Seances.Remove(seance);
+            db.SaveChanges();
+            return RedirectToAction("SeanceOverview");
+        }
+
     }
 }

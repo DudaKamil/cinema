@@ -1,0 +1,48 @@
+﻿@model Cinema.Models.Seance
+
+@{
+    ViewBag.Title = "Usuń Seans";
+}
+
+<h2>Usuń Seans</h2>
+
+<h3>Jesteś pewien, że chcesz to usunąć?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do Przeglądu", "SeanceOverview")
+        </div>
+    }
+</div>
