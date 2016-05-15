@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Cinema.Models.Order>
+
+@{
+    ViewBag.Title = "Przegląd Zamówień";
+}
+
+<h2>Przegląd Zamówień</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeanceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormalTicket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReducedTicket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketCode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeanceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NormalTicket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReducedTicket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketCode)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły", "MovieDetails", new { id = item.UserID }) |
+                @Html.ActionLink("Anuluj Zamówienie", "MovieDetails", new { id = item.UserID })
+            </td>
+        </tr>
+    }
+
+</table>

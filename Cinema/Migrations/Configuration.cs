@@ -68,19 +68,19 @@ namespace Cinema.Migrations
                 new Seance
                 {
                     MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
-                    Type = "standard",
+                    Type = "2D",
                     ShowDate = DateTime.Today.AddDays(14).AddHours(1)
                 },
                 new Seance
                 {
                     MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
-                    Type = "standard",
+                    Type = "3D",
                     ShowDate = DateTime.Today.AddDays(14).AddHours(2)
                 },
                 new Seance
                 {
                     MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
-                    Type = "standard",
+                    Type = "2D",
                     ShowDate = DateTime.Today.AddDays(14).AddHours(3)
                 }
             };
@@ -96,7 +96,8 @@ namespace Cinema.Migrations
                     UserID = 1,
                     ReducedTicket = 2,
                     NormalTicket = 2,
-                    TicketCode = "1234567"
+                    TicketCode = "1234567",
+                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
                 },
                 new Order
                 {
@@ -104,7 +105,8 @@ namespace Cinema.Migrations
                     UserID = 1,
                     ReducedTicket = 4,
                     NormalTicket = 4,
-                    TicketCode = "123456"
+                    TicketCode = "123456",
+                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
                 }
             };
             orderes.ForEach(order => context.Orders.AddOrUpdate(order));

@@ -172,6 +172,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MovieRepository.cs" />
+    <Compile Include="Services\OrderRepository.cs" />
     <Compile Include="Services\SeanceRepository.cs" />
     <Compile Include="Services\UserRepository.cs" />
   </ItemGroup>
@@ -201,6 +202,7 @@
     <Content Include="Views\Admin\SeanceDelete.cshtml" />
     <Content Include="Views\Application\MovieDetails.cshtml" />
     <Content Include="Views\Application\BuyTicket.cshtml" />
+    <Content Include="Views\Application\OrderSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

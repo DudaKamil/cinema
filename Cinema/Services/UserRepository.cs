@@ -32,5 +32,10 @@ namespace Cinema.Services
         {
             return Crypto.HashPassword(password);
         }
+
+        public User GetUser(string login)
+        {
+            return db.Users.FirstOrDefault(u => u.Login == login);
+        }
     }
 }

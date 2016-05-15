@@ -26,5 +26,8 @@ namespace Cinema.Models
 
         [DisplayName("Kod Biletu")]
         public string TicketCode { get; set; }
+
+        [DisplayName("Data Zamówienia")]
+        public DateTime OrderDate { get; set; }
     }
 }

@@ -1,20 +1,5 @@
-﻿@{
-    string user = HttpContext.Current.User.Identity.Name;
-}
-
-@if (HttpContext.Current.User.Identity.IsAuthenticated)
-{
-    @Html.AntiForgeryToken()
-    <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Repertuar", "Repertoire", "Application")</li>
-            <li>@Html.ActionLink("Cennik", "PriceList", "Application")</li>      
-    </ul>
-}
-else
-{
-    @Html.AntiForgeryToken()
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Repertuar", "Repertoire", "Application")</li>
-        <li>@Html.ActionLink("Cennik", "PriceList", "Application")</li>
-    </ul>
-}
+﻿@Html.AntiForgeryToken()
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Repertuar", "Repertoire", "Application")</li>
+    <li>@Html.ActionLink("Cennik", "PriceList", "Application")</li>
+</ul>

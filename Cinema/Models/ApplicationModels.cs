@@ -29,9 +29,11 @@ namespace Cinema.Models
     {
         public int SeanceID { get; set; }
 
+        [Required]
         [DisplayName("Bilety Ulgowe")]
         public int ReducedTicket { get; set; }
 
+        [Required]
         [DisplayName("Bilety Normalne")]
         public int NormalTicket { get; set; }
     }

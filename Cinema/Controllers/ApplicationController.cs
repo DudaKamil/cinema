@@ -21,6 +21,7 @@ namespace Cinema.Controllers
         private SeanceRepository seanceRepo = new SeanceRepository();
         private MovieRepository movieRepo = new MovieRepository();
         private UserRepository userRepo = new UserRepository();
+        private OrderRepository orderRepo = new OrderRepository();
 
         public ActionResult Repertoire()
         {
@@ -67,13 +68,39 @@ namespace Cinema.Controllers
         }
 
         [Authorize]
-        public ActionResult BuyTicket(int? id)
+        public ActionResult BuyTicket(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            TempData["SeanceID"] = id;       
             return View();
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult BuyTicket(BuyTicketModel buyTicketModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Order order = new Order()
+                {
+                    SeanceID = (int)TempData["SeanceID"],
+                    UserID = userRepo.GetUser(HttpContext.User.Identity.Name).UserID,
+                    NormalTicket = buyTicketModel.NormalTicket,
+                    ReducedTicket = buyTicketModel.ReducedTicket,
+                    TicketCode = Membership.GeneratePassword(9,0),
+                    OrderDate = DateTime.Now
+                };
+                db.Orders.Add(order);
+                db.SaveChanges();
+                return RedirectToAction("OrderSummary");
+            }
+            return View(buyTicketModel);
+        }
+
+        [Authorize]
+        public ActionResult OrderSummary()
+        {
+            return View(orderRepo.GetUserOrdersList(userRepo.GetUser(HttpContext.User.Identity.Name).UserID));
+        }
+
     }
 }
