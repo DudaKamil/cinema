@@ -1,0 +1,64 @@
+﻿@using Cinema.Services
+@model Cinema.Models.SeanceModel
+
+@{
+    ViewBag.Title = "Dodaj Seans";
+    var movieRepo = new MovieRepository();
+    var movieList = new List<Object>();
+    foreach (var movie in movieRepo.GetMovieList())
+    {
+        movieList.Add(new { value = movie.MovieID, text = movie.Title });
+    }
+
+    SelectList movieSelectList = new SelectList(movieList,
+        "value",
+        "text", "Wybierz film");
+}
+
+<h2>title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MovieID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.MovieID, movieSelectList, "Wybierz Film", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MovieID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShowDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ShowDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShowDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Type, new[]
+                    {
+                        new SelectListItem { Text = "2D", Value = "2D"},
+                         new SelectListItem { Text = "3D", Value = "3D"}
+                    }, "Wybierz typ", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Dodaj Seans" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

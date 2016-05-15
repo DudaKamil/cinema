@@ -238,5 +238,31 @@ namespace Cinema.Controllers
             db.SaveChanges();
             return RedirectToAction("MovieOverview");
         }
+
+        public ActionResult SeanceAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SeanceAdd(SeanceModel seanceModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Seance seance = new Seance();
+                {
+                    seance.MovieID = seanceModel.MovieID;
+                    seance.ShowDate = seanceModel.ShowDate;
+                    seance.Type = seanceModel.Type;
+                }
+
+                db.Seances.Add(seance);
+                db.SaveChanges();
+                return RedirectToAction("MovieOverview");
+            }
+
+            return View(seanceModel);
+        }
     }
 }
