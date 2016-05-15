@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Cinema.DAL;
 using Cinema.Models;
+using Cinema.Services;
 
 namespace Cinema.Controllers
 {
@@ -14,16 +15,11 @@ namespace Cinema.Controllers
     {
 
         private CinemaContext db = new CinemaContext();
-
-        [Authorize]
-        public ActionResult MainMenu()
-        {
-            return View();
-        }
+        private SeanceRepository seanceRepo = new SeanceRepository();
 
         public ActionResult Repertoire()
         {
-            return View();
+            return View(db.Movies.ToList());
         }
 
         public ActionResult PriceList()
@@ -32,23 +28,13 @@ namespace Cinema.Controllers
         }
 
         [Authorize]
-        public ActionResult BuyTicket(int? movieId)
+        public ActionResult SelectSeance(int? id)
         {
-            if (movieId == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(movieId);
-            if (movie == null)
-            {
-                return HttpNotFound();
-            }
-            BuyTicketModel buyTicketModel = new BuyTicketModel();
-            {
-                buyTicketModel.Movie = movie;
-                //tutaj czary
-            }
-            return View(buyTicketModel);
+            return View(seanceRepo.GetSeancesList(id));
         }
         
     }

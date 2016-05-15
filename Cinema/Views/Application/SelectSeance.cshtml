@@ -1,0 +1,56 @@
+﻿@using Cinema.Services
+@model IEnumerable<Cinema.Models.Seance>
+
+@{
+    ViewBag.Title = "Kup Bilet";
+    MovieRepository movieRepo = new MovieRepository();
+}
+
+
+<h2>Kup Bilet</h2>
+@if (!Model.Any())
+{
+    <tr>
+        <td>
+            Przepraszamy, ale dla wybranego filmu nie ma żadnych seansów.
+        </td>
+        <td>
+            @Html.ActionLink("Wybierz inny film", "Repertoire", "Application")
+        </td>
+    </tr>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(movieRepo.GetMovieName(item.MovieID), "Index", "Home")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShowDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Kup Bilet", "Index", "Home")
+                </td>
+            </tr>
+        }
+    </table>
+}
