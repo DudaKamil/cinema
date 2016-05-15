@@ -25,7 +25,7 @@ namespace Cinema.Services
             Movie movie = db.Movies.FirstOrDefault(u => u.MovieID == id);
             if (movie == null)
             {
-                return "errorę";
+                return "błąd";
             }
             return movie.Title;
         }

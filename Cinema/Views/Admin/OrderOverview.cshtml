@@ -1,0 +1,84 @@
+﻿@using Cinema.Models
+@using Cinema.Services
+@model IEnumerable<Cinema.Models.Order>
+
+@{
+    ViewBag.Title = "Przegląd Zamówień";
+
+    BuyTicketModel buyTicketModel = new BuyTicketModel();
+SeanceRepository seanceRepo = new SeanceRepository();
+MovieRepository movieRepo = new MovieRepository();
+UserRepository userRepo = new UserRepository();
+OrderRepository orderRepo = new OrderRepository();
+}
+
+<h2>Przegląd Zamówień</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Użytkownik")
+        </th>
+        <th>
+            @Html.DisplayName("Film")
+        </th>
+        <th>
+            @Html.DisplayName("Typ")
+        </th>
+        <th>
+            @Html.DisplayName("Data Seansu")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormalTicket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReducedTicket)
+        </th>
+        <th>
+            @Html.DisplayName("Koszt Biletów")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketCode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(userRepo.GetUserName(item.UserID), "UserDetails", new {id = item.UserID})
+            </td>
+            <td>
+                @Html.ActionLink(movieRepo.GetMovieName(seanceRepo.GetMovieId(item.SeanceID)), "MovieDetails", new { id = item.SeanceID })
+            </td>
+            <td>
+                @Html.ActionLink(seanceRepo.GetSeanceType(item.SeanceID), "SeanceDetails", new {id = item.SeanceID})
+            </td>
+            <td>
+                @Html.ActionLink(seanceRepo.GetSeanceDate(item.SeanceID).ToString(), "SeanceDetails", new { id = item.SeanceID})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NormalTicket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReducedTicket)
+            </td>
+            <td>
+                @buyTicketModel.GetTicketsCost(item.NormalTicket, item.ReducedTicket, seanceRepo.GetSeanceType(item.SeanceID))zł
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketCode)
+            </td>
+        </tr>
+    }
+
+</table>

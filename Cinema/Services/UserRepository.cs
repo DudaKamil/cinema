@@ -37,5 +37,10 @@ namespace Cinema.Services
         {
             return db.Users.FirstOrDefault(u => u.Login == login);
         }
+
+        public string GetUserName(int id)
+        {
+            return db.Users.FirstOrDefault(u => u.UserID == id).Name;
+        }
     }
 }

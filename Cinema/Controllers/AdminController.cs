@@ -335,5 +335,10 @@ namespace Cinema.Controllers
             return RedirectToAction("SeanceOverview");
         }
 
+        public ActionResult OrderOverview()
+        {
+            return View(db.Orders.ToList());
+        }
+
     }
 }
