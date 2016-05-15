@@ -81,7 +81,7 @@ else
                     @Html.DisplayFor(modelItem => item.Type)
                 </td>
                 <td>
-                    @Html.ActionLink("Kup Bilet", "Index", "Home")
+                    @Html.ActionLink("Kup Bilet", "BuyTicket", new { id = item.SeanceID})
                 </td>
             </tr>
         }

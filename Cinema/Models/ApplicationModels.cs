@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Models
 {
     public class MovieDetailsModel
-    {
+    {        
         [DisplayName("Tytuł")]
         public string Title { get; set; }
 
@@ -22,7 +23,16 @@ namespace Cinema.Models
         public string Description { get; set; }
 
         public IEnumerable<Seance> SeancesList { get; set; }
+    }
 
+    public class BuyTicketModel
+    {
+        public int SeanceID { get; set; }
 
+        [DisplayName("Bilety Ulgowe")]
+        public int ReducedTicket { get; set; }
+
+        [DisplayName("Bilety Normalne")]
+        public int NormalTicket { get; set; }
     }
 }

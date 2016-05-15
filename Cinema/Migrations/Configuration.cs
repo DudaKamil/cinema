@@ -93,17 +93,21 @@ namespace Cinema.Migrations
                 new Order
                 {
                     SeanceID = 1,
+                    UserID = 1,
                     ReducedTicket = 2,
-                    NormalTicket = 2
+                    NormalTicket = 2,
+                    TicketCode = "1234567"
                 },
                 new Order
                 {
                     SeanceID = 1,
+                    UserID = 1,
                     ReducedTicket = 4,
-                    NormalTicket = 4
+                    NormalTicket = 4,
+                    TicketCode = "123456"
                 }
             };
-            orderes.ForEach(order => context.Orderes.AddOrUpdate(order));
+            orderes.ForEach(order => context.Orders.AddOrUpdate(order));
             context.SaveChanges();
         }
     }

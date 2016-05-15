@@ -2,12 +2,12 @@
 @model IEnumerable<Cinema.Models.Seance>
 
 @{
-    ViewBag.Title = "Kup Bilet";
+    ViewBag.Title = "Wybierz Seans";
     MovieRepository movieRepo = new MovieRepository();
 }
 
 
-<h2>Kup Bilet</h2>
+<h2>Wybierz Seans</h2>
 @if (!Model.Any())
 {
     <tr>
@@ -48,9 +48,13 @@ else
                     @Html.DisplayFor(modelItem => item.Type)
                 </td>
                 <td>
-                    @Html.ActionLink("Kup Bilet", "Index", "Home")
+                    @Html.ActionLink("Kup Bilet", "BuyTicket", new {id = item.SeanceID})
                 </td>
             </tr>
         }
     </table>
+    <p>
+        @Html.ActionLink("Powrót do Repertuaru", "Repertoire")
+    </p>
 }
+
