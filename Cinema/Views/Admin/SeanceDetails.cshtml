@@ -1,7 +1,9 @@
-﻿@model Cinema.Models.Seance
+﻿@using Cinema.Services
+@model Cinema.Models.Seance
 
 @{
     ViewBag.Title = "Szczegóły Seansu";
+    MovieRepository movieRepo = new MovieRepository();
 }
 
 <h2>Szczegóły Seansu</h2>
@@ -14,7 +16,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MovieID)
+            @Html.ActionLink(movieRepo.GetMovieName(Model.MovieID), "MovieDetails", new { id = Model.MovieID })
         </dd>
 
         <dt>

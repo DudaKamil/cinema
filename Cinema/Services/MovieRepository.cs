@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Model;
 using System.Linq;
+using System.Net;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
+using System.Web.Mvc;
 using Cinema.DAL;
 using Cinema.Models;
 
@@ -17,9 +20,14 @@ namespace Cinema.Services
             return db.Movies.ToList();
         }
 
-        public void wtf()
+        public string GetMovieName(int id)
         {
-            
+            Movie movie = db.Movies.FirstOrDefault(u => u.MovieID == id);
+            if (movie == null)
+            {
+                return "errorę";
+            }
+            return movie.Title;
         }
 
     }

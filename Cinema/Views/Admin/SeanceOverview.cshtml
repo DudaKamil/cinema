@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Cinema.Models.Seance>
+﻿@using Cinema.Services
+@model IEnumerable<Cinema.Models.Seance>
 
 @{
     ViewBag.Title = "Przegląd Seansów";
+    MovieRepository movieRepo = new MovieRepository();
 }
 
 
@@ -28,7 +30,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MovieID)
+                @Html.ActionLink(movieRepo.GetMovieName(item.MovieID), "MovieDetails", new {id = item.MovieID})
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShowDate)
