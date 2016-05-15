@@ -87,6 +87,24 @@ namespace Cinema.Migrations
 
             seances.ForEach(seance => context.Seances.AddOrUpdate(seance));
             context.SaveChanges();
+
+            var orderes = new List<Order>
+            {
+                new Order
+                {
+                    SeanceID = 1,
+                    ReducedTicket = 2,
+                    NormalTicket = 2
+                },
+                new Order
+                {
+                    SeanceID = 1,
+                    ReducedTicket = 4,
+                    NormalTicket = 4
+                }
+            };
+            orderes.ForEach(order => context.Orderes.AddOrUpdate(order));
+            context.SaveChanges();
         }
     }
 }

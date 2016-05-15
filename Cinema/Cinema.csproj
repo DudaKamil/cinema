@@ -167,6 +167,7 @@
     <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Seance.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,6 +200,7 @@
     <Content Include="Views\Admin\SeanceEdit.cshtml" />
     <Content Include="Views\Admin\SeanceDelete.cshtml" />
     <Content Include="Views\Application\MovieDetails.cshtml" />
+    <Content Include="Views\Application\BuyTicket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
