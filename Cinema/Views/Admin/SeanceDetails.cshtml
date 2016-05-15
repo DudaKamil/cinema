@@ -1,0 +1,42 @@
+﻿@model Cinema.Models.Seance
+
+@{
+    ViewBag.Title = "Szczegóły Seansu";
+}
+
+<h2>Szczegóły Seansu</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+     |
+    @Html.ActionLink("Powrót do Przeglądu", "SeanceOverview")
+</p>
+

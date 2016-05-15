@@ -239,6 +239,11 @@ namespace Cinema.Controllers
             return RedirectToAction("MovieOverview");
         }
 
+        public ActionResult SeanceOverview()
+        {
+            return View(db.Seances.ToList());
+        }
+
         public ActionResult SeanceAdd()
         {
             return View();
@@ -265,9 +270,18 @@ namespace Cinema.Controllers
             return View(seanceModel);
         }
 
-        public ActionResult SeanceOverview()
+        public ActionResult SeanceDetails(int? id)
         {
-            return View(db.Seances.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Seance seance = db.Seances.Find(id);
+            if (seance == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seance);
         }
     }
 }
