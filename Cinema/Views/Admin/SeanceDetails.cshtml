@@ -32,11 +32,10 @@
         <dd>
             @Html.DisplayFor(model => model.Type)
         </dd>
-
     </dl>
 </div>
 <p>
-     |
+    @Html.ActionLink("Edytuj", "SeanceEdit", new { id = Model.SeanceID })  |
     @Html.ActionLink("Powrót do Przeglądu", "SeanceOverview")
 </p>
 

@@ -244,6 +244,20 @@ namespace Cinema.Controllers
             return View(db.Seances.ToList());
         }
 
+        public ActionResult SeanceDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Seance seance = db.Seances.Find(id);
+            if (seance == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seance);
+        }
+
         public ActionResult SeanceAdd()
         {
             return View();
@@ -270,7 +284,7 @@ namespace Cinema.Controllers
             return View(seanceModel);
         }
 
-        public ActionResult SeanceDetails(int? id)
+        public ActionResult SeanceEdit(int? id)
         {
             if (id == null)
             {
@@ -283,5 +297,19 @@ namespace Cinema.Controllers
             }
             return View(seance);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SeanceEdit([Bind(Include = "SeanceID,MovieID,ShowDate,Type")] Seance seance)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(seance).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("SeanceOverview");
+            }
+            return View(seance);
+        }
+
     }
 }
