@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Data.Entity;
 using Cinema.DAL;
 using Cinema.Models;
 
@@ -32,6 +32,25 @@ namespace Cinema.Services
         public Movie GetMovie(int id)
         {
             return _cinemaContext.GetMovieById(id);
+        }
+
+        public void Add(Movie movie)
+        {
+            _cinemaContext.Movies.Add(movie);
+            _cinemaContext.SaveChanges();
+        }
+
+        public void EditMovie(Movie movie)
+        {
+            _cinemaContext.Entry(movie).State = EntityState.Modified;
+            _cinemaContext.SaveChanges();
+        }
+
+        public void DeleteMovieById(int id)
+        {
+            var movie = _cinemaContext.Movies.Find(id);
+            _cinemaContext.Movies.Remove(movie);
+            _cinemaContext.SaveChanges();
         }
     }
 }

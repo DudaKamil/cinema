@@ -9,9 +9,9 @@ namespace Cinema.Services
     {
         private readonly AbstractCinemaContext _cinemaContext;
 
-        public OrderRepository(CinemaContext cinemaContext)
+        public OrderRepository(AbstractCinemaContext cinemaContext)
         {
-            this._cinemaContext = cinemaContext;
+            _cinemaContext = cinemaContext;
         }
 
         public List<Order> GetUserOrdersList(int? userId)
@@ -35,6 +35,11 @@ namespace Cinema.Services
         {
             _cinemaContext.Orders.Add(order);
             _cinemaContext.SaveChanges();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _cinemaContext.Orders.ToList();
         }
     }
 }

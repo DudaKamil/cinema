@@ -1,16 +1,26 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using Cinema.DAL;
 using Cinema.Models;
+using Cinema.Services;
 
 namespace Cinema.Controllers
 {
     [Authorize(Users = "admin")]
     public class AdminController : Controller
     {
-        private CinemaContext db = new CinemaContext();
+        private readonly MovieRepository _movieRepository;
+        private readonly OrderRepository _orderRepository;
+        private readonly SeanceRepository _seanceRepository;
+        private readonly UserRepository _userRepository;
+
+        public AdminController()
+        {
+            _userRepository = new UserRepository(new CinemaContext());
+            _movieRepository = new MovieRepository(new CinemaContext());
+            _seanceRepository = new SeanceRepository(new CinemaContext());
+            _orderRepository = new OrderRepository(new CinemaContext());
+        }
 
         public ActionResult AdminPanel()
         {
@@ -21,7 +31,7 @@ namespace Cinema.Controllers
         // GET: Users
         public ActionResult UserOverview()
         {
-            return View(db.Users.ToList());
+            return View(_userRepository.GetAllUsers());
         }
 
         // GET: Users/Details/5
@@ -31,7 +41,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            var user = _userRepository.GetUserById(id.Value);
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -54,18 +65,15 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                User user = new User();
+                var user = new User();
                 {
                     user.Login = registerModel.Login;
                     user.Password = registerModel.Password;
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
-
                 }
 
-                db.Users.Add(user);
-                db.SaveChanges();
+                _userRepository.Add(user);
                 return RedirectToAction("UserOverview");
             }
 
@@ -79,7 +87,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+
+            var user = _userRepository.GetUserById(id.Value);
             if (user == null)
             {
                 return HttpNotFound();
@@ -93,9 +102,7 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.Entry(user).Property(e => e.Password).IsModified = false;
-                db.SaveChanges();
+                _userRepository.EditUser(user);
                 return RedirectToAction("UserOverview");
             }
             return View(user);
@@ -107,7 +114,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+
+            var user = _userRepository.GetUserById(id.Value);
             if (user == null)
             {
                 return HttpNotFound();
@@ -119,25 +127,13 @@ namespace Cinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UserDeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
+            _userRepository.DeleteById(id);
             return RedirectToAction("UserOverview");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-
         public ActionResult MovieOverview()
         {
-            return View(db.Movies.ToList());
+            return View(_movieRepository.GetMovieList());
         }
 
         public ActionResult MovieDetails(int? id)
@@ -146,7 +142,7 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            var movie = _movieRepository.GetMovie(id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -166,7 +162,7 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                Movie movie = new Movie();
+                var movie = new Movie();
                 {
                     movie.Title = movieModel.Title;
                     movie.Length = movieModel.Length;
@@ -175,8 +171,7 @@ namespace Cinema.Controllers
                     movie.Description = movieModel.Description;
                 }
 
-                db.Movies.Add(movie);
-                db.SaveChanges();
+                _movieRepository.Add(movie);
                 return RedirectToAction("MovieOverview");
             }
 
@@ -189,7 +184,7 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            var movie = _movieRepository.GetMovie(id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -203,8 +198,7 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+                _movieRepository.EditMovie(movie);
                 return RedirectToAction("MovieOverview");
             }
             return View(movie);
@@ -216,7 +210,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+
+            var movie = _movieRepository.GetMovie(id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -228,15 +223,13 @@ namespace Cinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MovieDeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
-            db.SaveChanges();
+            _movieRepository.DeleteMovieById(id);
             return RedirectToAction("MovieOverview");
         }
 
         public ActionResult SeanceOverview()
         {
-            return View(db.Seances.ToList());
+            return View(_seanceRepository.GetAllSeances());
         }
 
         public ActionResult SeanceDetails(int? id)
@@ -245,7 +238,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seance seance = db.Seances.Find(id);
+
+            var seance = _seanceRepository.GetSeance(id.Value);
             if (seance == null)
             {
                 return HttpNotFound();
@@ -264,15 +258,14 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                Seance seance = new Seance();
+                var seance = new Seance();
                 {
                     seance.MovieID = seanceModel.MovieID;
                     seance.ShowDate = seanceModel.ShowDate;
                     seance.Type = seanceModel.Type;
                 }
 
-                db.Seances.Add(seance);
-                db.SaveChanges();
+                _seanceRepository.Add(seance);
                 return RedirectToAction("MovieOverview");
             }
 
@@ -285,7 +278,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seance seance = db.Seances.Find(id);
+
+            var seance = _seanceRepository.GetSeance(id.Value);
             if (seance == null)
             {
                 return HttpNotFound();
@@ -299,8 +293,7 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(seance).State = EntityState.Modified;
-                db.SaveChanges();
+                _seanceRepository.EditSeance(seance);
                 return RedirectToAction("SeanceOverview");
             }
             return View(seance);
@@ -312,7 +305,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seance seance = db.Seances.Find(id);
+
+            var seance = _seanceRepository.GetSeance(id.Value);
             if (seance == null)
             {
                 return HttpNotFound();
@@ -324,16 +318,13 @@ namespace Cinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SeanceDeleteConfirmed(int id)
         {
-            Seance seance = db.Seances.Find(id);
-            db.Seances.Remove(seance);
-            db.SaveChanges();
+            _seanceRepository.DeleteById(id);
             return RedirectToAction("SeanceOverview");
         }
 
         public ActionResult OrderOverview()
         {
-            return View(db.Orders.ToList());
+            return View(_orderRepository.GetAllOrders());
         }
-
     }
 }
