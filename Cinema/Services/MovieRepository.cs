@@ -16,7 +16,7 @@ namespace Cinema.Services
 
         public List<Movie> GetMovieList()
         {
-            return _cinemaContext.Movies.ToList();
+            return _cinemaContext.GetMovies();
         }
 
         public string GetMovieName(int id)
@@ -31,7 +31,7 @@ namespace Cinema.Services
 
         public Movie GetMovie(int id)
         {
-            return _cinemaContext.Movies.FirstOrDefault(u => u.MovieID == id);
+            return _cinemaContext.GetMovieById(id);
         }
     }
 }

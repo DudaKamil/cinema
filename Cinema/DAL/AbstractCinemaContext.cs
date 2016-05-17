@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Cinema.Models;
 
@@ -18,6 +19,11 @@ namespace Cinema.DAL
         public virtual Movie GetMovieById(int id)
         {
             return Movies.FirstOrDefault(u => u.MovieID == id);
+        }
+
+        public virtual List<Movie> GetMovies()
+        {
+            return Movies.ToList();
         }
     }
 }

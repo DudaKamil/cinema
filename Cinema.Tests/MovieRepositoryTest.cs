@@ -1,4 +1,5 @@
-﻿using Cinema.DAL;
+﻿using System.Collections.Generic;
+using Cinema.DAL;
 using Cinema.Models;
 using Cinema.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -53,6 +54,37 @@ namespace Cinema.Tests
             var actual = _repository.GetMovieName(10);
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ShouldReturnMovie()
+        {
+            const int id = 10;
+            var toBeReturned = new Movie {Title = "test"};
+            _mockCinemaContext.Setup(o => o.GetMovieById(id))
+                .Returns(toBeReturned);
+
+            var expected = "test";
+            var actual = _repository.GetMovie(10).Title;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SouldReturnListOfMovies()
+        {
+            var movies = new List<Movie>();
+            movies.Add(new Movie());
+            movies.Add(new Movie());
+            movies.Add(new Movie());
+
+            _mockCinemaContext.Setup(o => o.GetMovies())
+                .Returns(movies);
+
+            var expectedSize = 3;
+            var actualSize = _repository.GetMovieList().Count;
+
+            Assert.AreEqual(expectedSize, actualSize);
         }
     }
 }
