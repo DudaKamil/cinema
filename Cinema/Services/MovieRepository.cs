@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations.Model;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
-using System.Web.Mvc;
 using Cinema.DAL;
 using Cinema.Models;
 
