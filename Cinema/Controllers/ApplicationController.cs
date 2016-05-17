@@ -87,7 +87,7 @@ namespace Cinema.Controllers
                     UserID = userRepo.GetUser(HttpContext.User.Identity.Name).UserID,
                     NormalTicket = buyTicketModel.NormalTicket,
                     ReducedTicket = buyTicketModel.ReducedTicket,
-                    TicketCode = Membership.GeneratePassword(9,0),
+                    TicketCode = Guid.NewGuid().ToString(),
                     OrderDate = DateTime.Now
                 };
                 db.Orders.Add(order);
