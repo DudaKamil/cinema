@@ -33,6 +33,7 @@ namespace Cinema.Services
 
         public int GetMovieId(int id)
         {
+            // TODO: tu się wywala przy wyświetlaniu seansów z panelu admina
             return _cinemaContext.Seances.FirstOrDefault(u => u.SeanceID == id).MovieID;
         }
 
