@@ -1,9 +1,10 @@
-﻿@using Cinema.Services
+﻿@using Cinema.DAL
+@using Cinema.Services
 @model Cinema.Models.Seance
 
 @{
     ViewBag.Title = "Edycja Seansu";
-    var movieRepo = new MovieRepository();
+    var movieRepo = new MovieRepository(new CinemaContext());
     var movieList = new List<Object>();
     foreach (var movie in movieRepo.GetMovieList())
     {

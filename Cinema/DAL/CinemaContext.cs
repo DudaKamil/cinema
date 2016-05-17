@@ -1,20 +1,10 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Cinema.Models;
 
 namespace Cinema.DAL
 {
-    public class CinemaContext : DbContext
+    public class CinemaContext : AbstractCinemaContext
     {
-        public CinemaContext() : base("CinemaContext")
-        {
-        }
-
-        public DbSet<User> Users { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Seance> Seances { get; set; }
-        public DbSet<Order> Orders { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

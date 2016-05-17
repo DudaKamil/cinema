@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using Cinema.DAL;
+﻿using Cinema.DAL;
+using Cinema.Models;
 using Cinema.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -9,34 +9,48 @@ namespace Cinema.Tests
     [TestClass]
     public class MovieRepositoryTest
     {
-        private Mock<CinemaContext> _mockCinemaContext;
+        private Mock<AbstractCinemaContext> _mockCinemaContext;
         private MovieRepository _repository;
 
         [TestInitialize]
         public void SetUp()
         {
-            _mockCinemaContext = new Mock<CinemaContext>();
-            _repository = new MovieRepository();
+            _mockCinemaContext = new Mock<AbstractCinemaContext>();
+            _repository = new MovieRepository(_mockCinemaContext.Object);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
             _mockCinemaContext = null;
+            _repository = null;
         }
 
-        [Ignore]
         [TestMethod]
-        public void ShouldNotFindAnyMovieName()
+        public void ShouldFindAMovieTitle()
         {
-            var expected = "błąd";
-            string actual;
+            var toBeReturned = new Movie {Title = "tytuł"};
 
             const int id = 10;
-            _mockCinemaContext.Setup(o => o.Movies.FirstOrDefault(u => u.MovieID == id))
-                .Returns(() => null);
+            _mockCinemaContext.Setup(o => o.GetMovieById(id))
+                .Returns(toBeReturned);
 
-            actual = _repository.GetMovieName(id);
+
+            var expected = "tytuł";
+            var actual = _repository.GetMovieName(10);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ShouldNotFindAMovieTitle()
+        {
+            const int id = 10;
+            _mockCinemaContext.Setup(o => o.GetMovieById(id))
+                .Returns((Movie) null);
+
+            var expected = "błąd";
+            var actual = _repository.GetMovieName(10);
 
             Assert.AreEqual(expected, actual);
         }

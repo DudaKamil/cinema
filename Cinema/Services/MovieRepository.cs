@@ -7,16 +7,21 @@ namespace Cinema.Services
 {
     public class MovieRepository
     {
-        private CinemaContext db = new CinemaContext();
+        private readonly AbstractCinemaContext _cinemaContext;
+
+        public MovieRepository(AbstractCinemaContext cinemaContext)
+        {
+            _cinemaContext = cinemaContext;
+        }
 
         public List<Movie> GetMovieList()
         {
-            return db.Movies.ToList();
+            return _cinemaContext.Movies.ToList();
         }
 
         public string GetMovieName(int id)
         {
-            Movie movie = db.Movies.FirstOrDefault(u => u.MovieID == id);
+            var movie = _cinemaContext.GetMovieById(id);
             if (movie == null)
             {
                 return "błąd";
@@ -26,8 +31,7 @@ namespace Cinema.Services
 
         public Movie GetMovie(int id)
         {
-            return db.Movies.FirstOrDefault(u => u.MovieID == id);
+            return _cinemaContext.Movies.FirstOrDefault(u => u.MovieID == id);
         }
-
     }
 }

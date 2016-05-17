@@ -7,16 +7,34 @@ namespace Cinema.Services
 {
     public class OrderRepository
     {
-        private CinemaContext db = new CinemaContext();
+        private readonly AbstractCinemaContext _cinemaContext;
+
+        public OrderRepository(CinemaContext cinemaContext)
+        {
+            this._cinemaContext = cinemaContext;
+        }
 
         public List<Order> GetUserOrdersList(int? userId)
         {
-            return db.Orders.Where(order => order.UserID == userId).ToList();
+            return _cinemaContext.Orders.Where(order => order.UserID == userId).ToList();
         }
 
         public Order GetOrder(int? orderId)
         {
-            return db.Orders.FirstOrDefault(order => order.OrderID == orderId);
+            return _cinemaContext.Orders.FirstOrDefault(order => order.OrderID == orderId);
+        }
+
+        public void Remove(int id)
+        {
+            var order = GetOrder(id);
+            _cinemaContext.Orders.Remove(order);
+            _cinemaContext.SaveChanges();
+        }
+
+        public void Add(Order order)
+        {
+            _cinemaContext.Orders.Add(order);
+            _cinemaContext.SaveChanges();
         }
     }
 }

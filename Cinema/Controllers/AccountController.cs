@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using Cinema.DAL;
 using Cinema.Models;
@@ -14,8 +9,12 @@ namespace Cinema.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        private CinemaContext db = new CinemaContext();
-        private UserRepository userRepo = new UserRepository();
+        private readonly UserRepository _userRepo;
+
+        public AccountController()
+        {
+            _userRepo = new UserRepository(new CinemaContext());
+        }
 
         [HttpGet]
         public ActionResult Login()
@@ -28,13 +27,13 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User();
+                var user = new User();
                 {
                     user.Login = loginModel.Login;
                     user.Password = loginModel.Password;
                 }
 
-                if (userRepo.IsValidUser(user))
+                if (_userRepo.IsValidUser(user))
                     FormsAuthentication.RedirectFromLoginPage(loginModel.Login, loginModel.RememberMe);
 
                 ModelState.AddModelError("", "Błędne dane logowania.");
@@ -61,25 +60,24 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!userRepo.IsLoginFree(registerModel.Login) || !userRepo.IsEmailFree(registerModel.Email))
+                if (!_userRepo.IsLoginFree(registerModel.Login) || !_userRepo.IsEmailFree(registerModel.Email))
                 {
-                    if (!userRepo.IsLoginFree(registerModel.Login))
+                    if (!_userRepo.IsLoginFree(registerModel.Login))
                         ModelState.AddModelError("", "Login jest już używany.");
-                    if (!userRepo.IsEmailFree(registerModel.Email))
+                    if (!_userRepo.IsEmailFree(registerModel.Email))
                         ModelState.AddModelError("", "Email jest już używany.");
                     return View(registerModel);
                 }
 
-                User user = new User();
+                var user = new User();
                 {
                     user.Login = registerModel.Login;
-                    user.Password = userRepo.EncodePassword(registerModel.Password);
+                    user.Password = _userRepo.EncodePassword(registerModel.Password);
                     user.Email = registerModel.Email;
                     user.Name = registerModel.Name;
                 }
 
-                db.Users.Add(user);
-                db.SaveChanges();
+                _userRepo.Add(user);
 
                 return RedirectToAction("Login", "Account");
             }

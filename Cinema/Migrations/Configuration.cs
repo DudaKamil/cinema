@@ -10,8 +10,6 @@ namespace Cinema.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<CinemaContext>
     {
-        private CinemaContext cinemaContext = new CinemaContext();
-
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;

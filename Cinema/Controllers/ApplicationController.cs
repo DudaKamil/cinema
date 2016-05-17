@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Cinema.DAL;
@@ -10,15 +9,22 @@ namespace Cinema.Controllers
 {
     public class ApplicationController : Controller
     {
-        private readonly CinemaContext db = new CinemaContext();
-        private readonly MovieRepository movieRepo = new MovieRepository();
-        private readonly OrderRepository orderRepo = new OrderRepository();
-        private readonly SeanceRepository seanceRepo = new SeanceRepository();
-        private readonly UserRepository userRepo = new UserRepository();
+        private readonly MovieRepository _movieRepository;
+        private readonly OrderRepository _orderRepository;
+        private readonly SeanceRepository _seanceRepository;
+        private readonly UserRepository _userRepository;
+
+        public ApplicationController()
+        {
+            _movieRepository = new MovieRepository(new CinemaContext());
+            _orderRepository = new OrderRepository(new CinemaContext());
+            _seanceRepository = new SeanceRepository(new CinemaContext());
+            _userRepository = new UserRepository(new CinemaContext());
+        }
 
         public ActionResult Repertoire()
         {
-            return View(db.Movies.ToList());
+            return View(_movieRepository.GetMovieList());
         }
 
         public ActionResult PriceList()
@@ -32,7 +38,9 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var movie = db.Movies.Find(id);
+
+            var notNullableId = id.Value;
+            var movie = _movieRepository.GetMovie(notNullableId);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -45,7 +53,7 @@ namespace Cinema.Controllers
                 Length = movie.Length,
                 ImageURL = movie.ImageURL,
                 Description = movie.Description,
-                SeancesList = seanceRepo.GetSeancesList(id)
+                SeancesList = _seanceRepository.GetSeancesList(id)
             };
             return View(movieDetailsModel);
         }
@@ -57,7 +65,7 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(seanceRepo.GetSeancesList(id));
+            return View(_seanceRepository.GetSeancesList(id));
         }
 
         [Authorize]
@@ -73,18 +81,22 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                var order = new Order
+                if (buyTicketModel.ReducedTicket >= 0 && buyTicketModel.NormalTicket >= 0 &&
+                    buyTicketModel.ReducedTicket + buyTicketModel.NormalTicket > 0)
                 {
-                    SeanceID = (int) TempData["SeanceID"],
-                    UserID = userRepo.GetUser(HttpContext.User.Identity.Name).UserID,
-                    NormalTicket = buyTicketModel.NormalTicket,
-                    ReducedTicket = buyTicketModel.ReducedTicket,
-                    TicketCode = Guid.NewGuid().ToString(),
-                    OrderDate = DateTime.Now
-                };
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("OrderSummary");
+                    var order = new Order
+                    {
+                        SeanceID = (int) TempData["SeanceID"],
+                        UserID = _userRepository.GetUser(HttpContext.User.Identity.Name).UserID,
+                        NormalTicket = buyTicketModel.NormalTicket,
+                        ReducedTicket = buyTicketModel.ReducedTicket,
+                        TicketCode = Guid.NewGuid().ToString(),
+                        OrderDate = DateTime.Now
+                    };
+                    _orderRepository.Add(order);
+                    return RedirectToAction("OrderSummary");
+                }
+                ModelState.AddModelError("", "Musisz kupić przynajmniej jeden bilet.");
             }
             return View(buyTicketModel);
         }
@@ -92,7 +104,8 @@ namespace Cinema.Controllers
         [Authorize]
         public ActionResult OrderSummary()
         {
-            return View(orderRepo.GetUserOrdersList(userRepo.GetUser(HttpContext.User.Identity.Name).UserID));
+            return
+                View(_orderRepository.GetUserOrdersList(_userRepository.GetUser(HttpContext.User.Identity.Name).UserID));
         }
 
 
@@ -103,13 +116,14 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = db.Orders.Find(id);
+
+            var order = _orderRepository.GetOrder(id);
             if (order == null)
             {
                 return HttpNotFound();
             }
-            var seance = seanceRepo.GetSeance(order.SeanceID);
-            var movie = movieRepo.GetMovie(seance.MovieID);
+            var seance = _seanceRepository.GetSeance(order.SeanceID);
+            var movie = _movieRepository.GetMovie(seance.MovieID);
             var buyTicket = new BuyTicketModel();
             var orderDetailsModel = new OrderDetailsModel
             {
@@ -136,7 +150,8 @@ namespace Cinema.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = db.Orders.Find(id);
+
+            var order = _orderRepository.GetOrder(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -148,9 +163,7 @@ namespace Cinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult OrderDeleteConfirmed(int id)
         {
-            var order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
+            _orderRepository.Remove(id);
             return RedirectToAction("OrderSummary");
         }
     }

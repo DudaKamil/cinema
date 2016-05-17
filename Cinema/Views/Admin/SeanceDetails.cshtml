@@ -1,9 +1,10 @@
-﻿@using Cinema.Services
+﻿@using Cinema.DAL
+@using Cinema.Services
 @model Cinema.Models.Seance
 
 @{
     ViewBag.Title = "Szczegóły Seansu";
-    MovieRepository movieRepo = new MovieRepository();
+    MovieRepository movieRepo = new MovieRepository(new CinemaContext());
 }
 
 <h2>Szczegóły Seansu</h2>

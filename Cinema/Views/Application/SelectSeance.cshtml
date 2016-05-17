@@ -1,9 +1,10 @@
-﻿@using Cinema.Services
+﻿@using Cinema.DAL
+@using Cinema.Services
 @model IEnumerable<Cinema.Models.Seance>
 
 @{
     ViewBag.Title = "Wybierz Seans";
-    MovieRepository movieRepo = new MovieRepository();
+    MovieRepository movieRepo = new MovieRepository(new CinemaContext());
 }
 
 
