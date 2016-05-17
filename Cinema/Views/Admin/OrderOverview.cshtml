@@ -54,6 +54,7 @@
                 @Html.ActionLink(userRepo.GetUserName(item.UserID), "UserDetails", new {id = item.UserID})
             </td>
             <td>
+@*                wywala się przy wyświetlaniu seansów z panelu admina - item.SeanceID = null*@
                 @Html.ActionLink(movieRepo.GetMovieName(seanceRepo.GetMovieId(item.SeanceID)), "MovieDetails", new {id = item.SeanceID})
             </td>
             <td>
