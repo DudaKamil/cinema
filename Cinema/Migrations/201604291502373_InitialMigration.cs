@@ -29,6 +29,7 @@ namespace Cinema.Migrations
                     Name = c.String()
                 })
                 .PrimaryKey(t => t.UserID);
+
         }
 
         public override void Down()

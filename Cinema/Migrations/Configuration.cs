@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Helpers;
 using Cinema.DAL;
 using Cinema.Models;
+using System.Collections;
 
 namespace Cinema.Migrations
 {
@@ -108,6 +109,21 @@ namespace Cinema.Migrations
                 }
             };
             orderes.ForEach(order => context.Orders.AddOrUpdate(order));
+            context.SaveChanges();
+
+            var ticketPrices = new List<TicketPrice>
+            {
+                new TicketPrice
+                {
+                    Id = 1,
+                    reduced2D = 10,
+                    reduced3D = 16,
+                    normal2D = 15,
+                    normal3D = 20
+                }
+            };
+
+            ticketPrices.ForEach(ticketPrice => context.TicketPrices.AddOrUpdate(ticketPrice));
             context.SaveChanges();
         }
     }

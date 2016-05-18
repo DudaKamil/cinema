@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Cinema.DAL;
 using Cinema.Models;
 using Cinema.Services;
+using System.Collections.Generic;
 
 namespace Cinema.Controllers
 {
@@ -13,6 +14,7 @@ namespace Cinema.Controllers
         private readonly OrderRepository _orderRepository;
         private readonly SeanceRepository _seanceRepository;
         private readonly UserRepository _userRepository;
+        private readonly TicketPriceRepository _ticketPriceRepository;
 
         public ApplicationController()
         {
@@ -29,7 +31,18 @@ namespace Cinema.Controllers
 
         public ActionResult PriceList()
         {
-            return View();
+            int x = 1;
+            var ticketPrice = _ticketPriceRepository.getPrices(x);
+            var ticketPrices = new TicketPrice
+            {
+                Id = ticketPrice.Id,
+                reduced2D = ticketPrice.reduced2D,
+                reduced3D = ticketPrice.reduced3D,
+                normal2D = ticketPrice.normal2D,
+                normal3D = ticketPrice.normal3D
+            };
+            
+            return View(ticketPrices);
         }
 
         public ActionResult MovieDetails(int? id)
