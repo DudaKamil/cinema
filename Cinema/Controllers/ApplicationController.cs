@@ -22,6 +22,7 @@ namespace Cinema.Controllers
             _orderRepository = new OrderRepository(new CinemaContext());
             _seanceRepository = new SeanceRepository(new CinemaContext());
             _userRepository = new UserRepository(new CinemaContext());
+            _ticketPriceRepository = new TicketPriceRepository(new CinemaContext());
         }
 
         public ActionResult Repertoire()
@@ -31,15 +32,14 @@ namespace Cinema.Controllers
 
         public ActionResult PriceList()
         {
-            int x = 1;
-            var ticketPrice = _ticketPriceRepository.getPrices(x);
+
             var ticketPrices = new TicketPrice
             {
-                Id = ticketPrice.Id,
-                reduced2D = ticketPrice.reduced2D,
-                reduced3D = ticketPrice.reduced3D,
-                normal2D = ticketPrice.normal2D,
-                normal3D = ticketPrice.normal3D
+                Id = _ticketPriceRepository.GetPrices(1).Id,
+                reduced2D = _ticketPriceRepository.GetPrices(1).reduced2D,
+                reduced3D = _ticketPriceRepository.GetPrices(1).reduced3D,
+                normal2D = _ticketPriceRepository.GetPrices(1).normal2D,
+                normal3D = _ticketPriceRepository.GetPrices(1).normal3D
             };
             
             return View(ticketPrices);

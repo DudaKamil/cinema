@@ -15,7 +15,7 @@ namespace Cinema.Services
         {
             _cinemaContext = cinemacontext;
         }
-         public TicketPrice getPrices(int? id)
+         public TicketPrice GetPrices(int? id)
         {
             return _cinemaContext.TicketPrices.FirstOrDefault(u => u.Id == id);
         }
