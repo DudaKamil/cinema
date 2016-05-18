@@ -1,14 +1,16 @@
 ﻿using System;
+using Cinema.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using Cinema.DAL;
 
 namespace Cinema.Tests.AccountController
 {
     [TestClass]
-    class RegisterTest
+    public class RegisterTest
     {
-        IWebDriver driver = new FirefoxDriver();
+        private IWebDriver driver;
         static Random rand = new Random();
         private int number;
 
@@ -16,8 +18,8 @@ namespace Cinema.Tests.AccountController
         [TestInitialize]
         public void SetUp()
         {
+            driver = new FirefoxDriver();
             number = rand.Next(1000000000);
-
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Logout");
         }
 
@@ -25,14 +27,15 @@ namespace Cinema.Tests.AccountController
         public void CleanUp()
         {
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Logout");
+            driver?.Quit();
         }
 
         [TestMethod]
         public void UserCreatedSuccessfullyTest()
         {
-            string expected = "Menu Główne - Cinema";
+            string expected = "Przegląd Zamówień - Cinema";
             string actual = null;
-
+            
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Register");
             IWebElement loginTextBox = driver.FindElement(By.Id("Login"));
             IWebElement passwordTextBox = driver.FindElement(By.Id("Password"));
@@ -55,12 +58,11 @@ namespace Cinema.Tests.AccountController
             loginTextBox.SendKeys(number + "newusertest");
             passwordTextBox.SendKeys(number + "newusertest");
             driver.FindElement(By.ClassName("login-button")).Click();
-            driver.Navigate().GoToUrl("http://localhost:49610/Application/MainMenu");
+            driver.Navigate().GoToUrl("http://localhost:49610/Application/OrderSummary");
 
             actual = driver.Title;
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual);         
         }
-
     }
 }

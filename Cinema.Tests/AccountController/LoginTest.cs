@@ -5,13 +5,14 @@ using OpenQA.Selenium.Firefox;
 namespace Cinema.Tests.AccountController
 {
     [TestClass]
-    class LoginTest
+    public class LoginTest
     {
-        IWebDriver driver = new FirefoxDriver();
+        private IWebDriver driver;
 
         [TestInitialize]
         public void SetUp()
         {
+            driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Logout");
         }
 
@@ -19,6 +20,7 @@ namespace Cinema.Tests.AccountController
         public void CleanUp()
         {
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Logout");
+            driver?.Quit();
         }
 
         [TestMethod]
@@ -64,7 +66,7 @@ namespace Cinema.Tests.AccountController
         [TestMethod]
         public void UserLoginSuccessfulTest()
         {
-            string expected = "Menu Główne - Cinema";
+            string expected = "Przegląd Zamówień - Cinema";
             string actual = null;
 
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Login");
@@ -74,7 +76,7 @@ namespace Cinema.Tests.AccountController
             loginTextBox.SendKeys("user");
             passwordTextBox.SendKeys("user");
             driver.FindElement(By.ClassName("login-button")).Click();
-            driver.Navigate().GoToUrl("http://localhost:49610/Application/MainMenu");
+            driver.Navigate().GoToUrl("http://localhost:49610/Application/OrderSummary");
 
             actual = driver.Title;
 
@@ -84,7 +86,7 @@ namespace Cinema.Tests.AccountController
         [TestMethod]
         public void UserLoginFailTest()
         {
-            string expected = "Menu Główne - Cinema";
+            string expected = "Przegląd Zamówień - Cinema";
             string actual = null;
 
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Login");
@@ -94,7 +96,7 @@ namespace Cinema.Tests.AccountController
             loginTextBox.SendKeys("user");
             passwordTextBox.SendKeys("wrongpassword");
             driver.FindElement(By.ClassName("login-button")).Click();
-            driver.Navigate().GoToUrl("http://localhost:49610/Application/MainMenu");
+            driver.Navigate().GoToUrl("http://localhost:49610/Application/OrderSummary");
 
             actual = driver.Title;
 
