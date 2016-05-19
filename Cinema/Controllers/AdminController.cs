@@ -13,6 +13,7 @@ namespace Cinema.Controllers
         private readonly OrderRepository _orderRepository;
         private readonly SeanceRepository _seanceRepository;
         private readonly UserRepository _userRepository;
+        private readonly TicketPriceRepository _ticketPriceRepository;
 
         public AdminController()
         {
@@ -20,6 +21,7 @@ namespace Cinema.Controllers
             _movieRepository = new MovieRepository(new CinemaContext());
             _seanceRepository = new SeanceRepository(new CinemaContext());
             _orderRepository = new OrderRepository(new CinemaContext());
+            _ticketPriceRepository = new TicketPriceRepository(new CinemaContext());
         }
 
         public ActionResult AdminPanel()
@@ -107,7 +109,6 @@ namespace Cinema.Controllers
             }
             return View(user);
         }
-
         public ActionResult UserDelete(int? id)
         {
             if (id == null)
@@ -325,6 +326,34 @@ namespace Cinema.Controllers
         public ActionResult OrderOverview()
         {
             return View(_orderRepository.GetAllOrders());
+        }
+
+        //public ActionResult PricesOverview()
+        //{
+
+        //    return View(_ticketPriceRepository.GetList());
+        //}
+        public ActionResult PricesEdit(int? id)
+        {
+
+            var ticketPrices = _ticketPriceRepository.GetPrices(1);
+            if (ticketPrices == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ticketPrices);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PricesEdit([Bind(Include = "Id,reduced2D,reduced3D,normal2D,normal3D")] TicketPrice ticketPrice)
+        {
+            if (ModelState.IsValid)
+            {
+                _ticketPriceRepository.EditPrice(ticketPrice);
+                return RedirectToAction("PricesEdit");
+            }
+            return View(ticketPrice);
         }
     }
 }

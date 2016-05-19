@@ -32,7 +32,6 @@ namespace Cinema.Controllers
 
         public ActionResult PriceList()
         {
-
             var ticketPrices = new TicketPrice
             {
                 Id = _ticketPriceRepository.GetPrices(1).Id,

@@ -2,6 +2,7 @@
 using Cinema.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -22,8 +23,12 @@ namespace Cinema.Services
 
         public void EditPrice(TicketPrice ticketprice)
         {
-            _cinemaContext.Entry(ticketprice).State = System.Data.Entity.EntityState.Modified;
+            _cinemaContext.Entry(ticketprice).State = EntityState.Modified;;
             _cinemaContext.SaveChanges();
+        }
+        public List<TicketPrice> GetList()
+        {
+            return _cinemaContext.TicketPrices.ToList();
         }
     }
 }
