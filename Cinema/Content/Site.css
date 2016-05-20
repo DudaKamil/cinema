@@ -1,2 +1,8 @@
 ﻿/*Fix to navbar*/
 body { padding-top: 70px; }
+
+footer {
+    bottom: 0;
+    clear: both;
+    position: fixed;
+}

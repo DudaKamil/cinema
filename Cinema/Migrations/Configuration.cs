@@ -95,7 +95,7 @@ namespace Cinema.Migrations
                     UserID = 1,
                     ReducedTicket = 2,
                     NormalTicket = 2,
-                    TicketCode = "1234567",
+                    TicketCode = Guid.NewGuid().ToString(),
                     OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
                 },
                 new Order
@@ -104,7 +104,7 @@ namespace Cinema.Migrations
                     UserID = 1,
                     ReducedTicket = 4,
                     NormalTicket = 4,
-                    TicketCode = "123456",
+                    TicketCode = Guid.NewGuid().ToString(),
                     OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
                 }
             };
