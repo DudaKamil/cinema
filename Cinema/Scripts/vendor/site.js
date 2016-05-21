@@ -2,10 +2,10 @@
 
   $(window).scroll(function () {  
       console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 150) {
+    if ($(window).scrollTop() > 130) {
         $('.navbar').addClass('navbar-fixed-top');
     }
-    if ($(window).scrollTop() < 151) {
+    if ($(window).scrollTop() < 131) {
         $('.navbar').removeClass('navbar-fixed-top');
 
     }
