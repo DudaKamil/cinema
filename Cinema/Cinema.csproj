@@ -120,6 +120,14 @@
     <Content Include="Content\vendor\bootstrap.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\posters\5thWave.jpg" />
+    <Content Include="img\posters\BatmanVsSuperman.jpg" />
+    <Content Include="img\posters\OtherSideOfDoor.jpg" />
+    <Content Include="img\posters\TheHuntsman.jpg" />
+    <Content Include="img\posters\TheJungleBook.jpg" />
+    <Content Include="img\posters\Zootopia.jpg" />
+    <Content Include="img\top-bg.png" />
     <Content Include="Scripts\account\auth.js" />
     <Content Include="Scripts\admin\addFilm.js" />
     <Content Include="Scripts\Home\index.js" />
@@ -221,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\posters\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
