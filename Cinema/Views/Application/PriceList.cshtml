@@ -5,18 +5,82 @@
 }
 
 
+<div class="container">
+    <div class="row">
+        <div class=" col-md-8 col-md-offset-2">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h2>Cennik</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table id="moviesTable" class="table table-striped table-bordered table-list">
+                        <thead>
+                            <tr>
+                                <th class="text-left col-md-3 col-xs-3">Rodzaj seansu</th>
+                                <th class="text-center col-md-2 col-xs-2">Filmy 2D</th>
+                                <th class="text-center col-md-2 col-xs-2">Filmy 3D</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bilet normalny</td>
+                                <td class="text-center">@Html.DisplayFor(model => model.normal2D)</td>
+                                <td class="text-center">@Html.DisplayFor(model => model.normal3D)</td>
+                            </tr>
+                            <tr>
+                                <td>Bilet ulgowy*</td>
+                                <td class="text-center">@Html.DisplayFor(model => model.reduced2D)</td>
+                                <td class="text-center">@Html.DisplayFor(model => model.reduced3D)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-sm-12">
+                        <h6>*młodzież szkolna oraz studenci do 26 roku życia (za okazaniem ważnej legitymacji uczniowskiej/studenckiej)</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1 class="text-center">Cennik</h1>
-
+<!--
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Rodzaj seansu</th>
+                <th>Filmy 2D</th>
+                <th>Filmy 3D</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bilet normalny</td>
+                <td>@Html.DisplayFor(model => model.normal2D)</td>
+                <td>@Html.DisplayFor(model => model.normal3D)</td>
+            </tr>
+            <tr>
+                <td>Bilet ulgowy</td>
+                <td>@Html.DisplayFor(model => model.reduced2D)</td>
+                <td>@Html.DisplayFor(model => model.reduced3D)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--
 <div class="thumbnail">
     <div class="row">
-        <div class="col-sm-4 text-left">
-            <h3>Rodzaj seansu</h3>        
+        <div class="col-sm-push-2 col-sm-4 text-left">
+                  
         </div>
         <div class="col-sm-4 text-center">
             <h3>Filmy 2D</h3>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm-4 col-sm-offset-2 text-center">
             <h3>Filmy 3D</h3>
         </div>
     </div>
@@ -50,4 +114,5 @@
             <h6>*młodzież szkolna oraz studenci do 26 roku życia (za okazaniem ważnej legitymacji uczniowskiej/studenckiej)</h6>
         </div>
     </div>
-</div>
+    
+</div>-->
