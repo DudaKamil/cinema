@@ -29,9 +29,17 @@
         <div id="header">
             <div class="bg"></div>
             <div class="jumbotron">
-                <h1>Kino </h1>
-                <p class="lead">TU JEST LOGO</p>
-            </div>
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="@Url.Content("/img/image_2.png")" height="125" width="150" />
+                    <p class="lead cinemaName">KINO LUJ</p>
+                </a>
+               
+
+
+                <!--<img id="logo" src="/img/image_2.png" />-->
+               
+                
+</div>
             <div id="placeholder">
                 <div class="navbar navbar-default">
                     <div class="row">
@@ -42,7 +50,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                @Html.ActionLink("Kino", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                                @Html.ActionLink("home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand material-icons" })
                             </div>
                             <div id="navbar-content" class="collapse navbar-collapse">
                                 <div class="nav navbar-nav">

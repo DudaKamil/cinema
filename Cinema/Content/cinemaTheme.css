@@ -1,5 +1,5 @@
 ﻿.navbar {
-  background-color: #4B515D;
+  background-color: #0d47a1;
   border: 0;
   border-radius: 0;
   width: 100%;
@@ -48,7 +48,7 @@ padding-right:-20%;
 
 .navbar,
 .navbar.navbar-default {
-  background-color: #4B515D;
+  background-color: #0d47a1;
   color: rgba(255,255,255, 0.84);
 }
 
@@ -72,12 +72,12 @@ padding-right:-20%;
 .navbar.navbar-default .dropdown-menu li > a:hover,
 .navbar .dropdown-menu li > a:focus,
 .navbar.navbar-default .dropdown-menu li > a:focus {
-  color: #4B515D;
+  color: #0d47a1;
   background-color: #eeeeee;
 }
 .navbar .dropdown-menu .active > a,
 .navbar.navbar-default .dropdown-menu .active > a {
-  background-color: #4B515D;
+  background-color: #0d47a1;
   color: rgba(255,255,255, 0.84);
 }
 .navbar .dropdown-menu .active > a:hover,
