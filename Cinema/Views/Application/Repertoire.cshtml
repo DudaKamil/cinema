@@ -5,40 +5,30 @@
 
 <h2>Repertuar</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Length)
-        </th>
-        <th>
-        </th>
+    <div class="row">
 
-    </tr>
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-md-2">
+                <div class="hovereffect">
+                    <img class="img-responsive" src="http://placehold.it/200x250" alt="">
+                        <div class="overlay">
+                            <a href="@Url.Action("MovieDetails", new { id = item.MovieID })">
+                                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                                <p>@Html.DisplayFor(modelItem => item.Genre)</p>
+                                <hr />
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Length)
-            </td>
-            <td>
-                @Html.ActionLink("Szczegóły Filmu", "MovieDetails", new { id = item.MovieID }) |
-                @Html.ActionLink("Wybierz Seans", "SelectSeance", new { id = item.MovieID })
-            </td>
+                                <div class="repertoire-thumbnail-footer">
+                                    @Html.ActionLink("Kup bilet", "SelectSeance", new { id = item.MovieID }, new { @class = "btn btn-raised btn-primary btn-sm" })
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                 <h5><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h5>
+              </div>
 
-        </tr>
-    }
+        }
+    </div>
+
 
 </table>

@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="Content\account\auth.css" />
     <Content Include="Content\admin\AddFilm.css" />
+    <Content Include="Content\Application\Repertoire.css" />
     <Content Include="Content\cinemaTheme.css" />
     <Content Include="Content\Home\Index.css" />
     <Content Include="Content\vendor\bootstrap-slate.min.css" />
