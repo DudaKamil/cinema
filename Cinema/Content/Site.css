@@ -1,5 +1,49 @@
-﻿/*Fix to navbar*/
-body { padding-top: 70px; }
+﻿.bg {
+  background: url(/img/cinemaonscreen.jpg) no-repeat center center;
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  top:0;
+  left:0;
+  z-index: -1;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body  .jumbotron {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  color: #f5f5f5;
+  margin: 0 0 auto;
+  height: 130px;
+  color: transparent;
+  text-shadow: #444 0 1px 1px;
+  background:transparent;
+  border-color: transparent;
+  color: #f5f5f5;
+
+}
+
+#placeholder{
+  
+    height: 100px;
+}
+
+.navbar-right{
+    position: relative;
+   
+}
+
+#navbar-content{
+    padding-right: 50px;
+}
+
+.navbar-fixed-top .navbar-right{
+
+}
 
 html,
 body {
@@ -12,7 +56,7 @@ body {
    position:relative;
 }
 #header {
-   padding:30px; /* Height of the navbar */
+   padding-bottom:0px; /* Height of the navbar */
 }
 #body {
    padding:10px;

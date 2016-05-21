@@ -27,20 +27,32 @@
 
     <div id="container">
         <div id="header">
-
-            <div class="navbar navbar navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        @Html.ActionLink("Cinema", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse collapse navbar-responsive-collapse">
-                        @Html.Partial("_ApplicationPartial")
-                        @Html.Partial("_AccountPartial")
+            <div class="bg"></div>
+            <div class="jumbotron">
+                <h1>Kino </h1>
+                <p class="lead">TU JEST LOGO</p>
+            </div>
+            <div id="placeholder">
+                <div class="navbar navbar-default">
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                @Html.ActionLink("Kino", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                            </div>
+                            <div id="navbar-content" class="collapse navbar-collapse">
+                                <div class="nav navbar-nav">
+                                    @Html.Partial("_ApplicationPartial")
+                                </div>
+                                <div class="nav navbar-nav navbar-right">
+                                    @Html.Partial("_AccountPartial")
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,6 +73,8 @@
 
 <script src="~/Scripts/vendor/material.js"></script>
 <script src="~/Scripts/vendor/ripples.js"></script>
+<script src="~/Scripts/vendor/site.js"></script>
+
 
 </body>
 </html>

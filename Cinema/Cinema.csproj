@@ -136,6 +136,7 @@
     <Content Include="Scripts\vendor\index.js" />
     <Content Include="Scripts\vendor\material.js" />
     <Content Include="Scripts\vendor\ripples.js" />
+    <Content Include="Scripts\vendor\site.js" />
     <Content Include="Views\Admin\UserAdd.cshtml" />
     <Content Include="Views\Admin\UserDelete.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
