@@ -13,7 +13,7 @@ ul.button-list li {
     height: 150px !important;
 }
 
-.btn-raised {
+ul.button-list .btn-raised {
     padding-top: 35px;
     width: 175px !important;
     height: 175px !important;
