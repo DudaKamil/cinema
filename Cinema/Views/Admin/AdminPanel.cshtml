@@ -3,10 +3,38 @@
 }
 
 <h2>Panel Admina</h2>
-<ul style="list-style-type: none">
-    <li>@Html.ActionLink("Przeglądaj Filmy", "MovieOverview", "Admin", new {@class = "btn btn-primary"})</li>
-    <li>@Html.ActionLink("Przeglądaj Seanse", "SeanceOverview", "Admin", new { @class = "btn btn-primary" })</li>
-    <li>@Html.ActionLink("Przeglądaj Użytkowników", "UserOverview", "Admin", new {@class = "btn btn-primary"})</li>
-    <li>@Html.ActionLink("Przeglądaj Zamówienia", "OrderOverview", "Admin", new { @class = "btn btn-primary" })</li>
-    <li>@Html.ActionLink("Zmień Ceny Biletów", "PricesEdit", "Admin", new { @class = "btn btn-primary" })</li>
-</ul>
+<div class="container">
+        <ul class="button-list">
+            <li>
+                <a href="@Url.Action("MovieOverview", "Admin")" class="btn btn-raised btn-info">
+                    <i class="fa fa-film fa-5x"></i><br />
+                    Przegląd <br /> Filmów
+                </a>
+            </li>
+            <li>
+                <br/>
+                <a href="@Url.Action("SeanceOverview", "Admin")" class="btn btn-raised btn-info">
+                    <i class="fa fa-calendar fa-5x"></i><br/>
+                    Przegląd <br/> Seansów
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("UserOverview", "Admin")" class="btn btn-raised btn-info">
+                    <i class="fa fa-user fa-5x"></i><br />
+                    Przegląd <br />użytkowników
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("OrderOverview", "Admin")" class="btn btn-raised btn-info">
+                    <i class="fa fa-shopping-cart fa-5x"></i><br />
+                    Przegląd <br /> Zamówień
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("PricesEdit", "Admin")" class="btn btn-raised btn-info">
+                    <i class="fa fa-money fa-5x"></i><br />
+                    Przegląd <br /> Cennika
+                </a>
+            </li>   
+        </ul>
+</div>

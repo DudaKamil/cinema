@@ -1,0 +1,20 @@
+﻿ul.button-list {
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+}
+
+ul.button-list li {
+    
+    display: inline-block;
+    margin: 30px !important;
+    position: relative;
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.btn-raised {
+    padding-top: 35px;
+    width: 175px !important;
+    height: 175px !important;
+}

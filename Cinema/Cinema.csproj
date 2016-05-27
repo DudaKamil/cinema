@@ -130,6 +130,7 @@
     <Content Include="img\top-bg.png" />
     <Content Include="Scripts\account\auth.js" />
     <Content Include="Scripts\admin\addFilm.js" />
+    <Content Include="Content\admin\adminPanel.css" />
     <Content Include="Scripts\Home\index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
