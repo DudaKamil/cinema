@@ -16,57 +16,66 @@
         "text", "Wybierz film");
 }
 
-<h2>Edytuj Seans</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 col-md-offset-3">
+                <div class="panel panel-info">
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.SeanceID)
+                    <div class="panel-heading">
+                        <h3>
+                            <strong>Edytuj Seans</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.SeanceID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MovieID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.MovieID, movieSelectList, "Wybierz Film", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MovieID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MovieID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.MovieID, movieSelectList, "Wybierz Film", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.MovieID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShowDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ShowDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ShowDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ShowDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ShowDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ShowDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Type, new[]
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Type, new[]
                     {
                         new SelectListItem { Text = "2D", Value = "2D"},
                          new SelectListItem { Text = "3D", Value = "3D"}
                     }, "Wybierz typ", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz Zmiany" class="btn btn-default" />
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <a href="@Url.Action("SeanceOverview")" class="btn btn-default">Powrót do Przeglądu</a>
+                                    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Powrót do Przeglądu", "SeanceOverview")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

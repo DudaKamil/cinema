@@ -46,10 +46,10 @@
                                                               @Html.DisplayFor(modelItem => item.Type)
                                                           </td>
                                                           <td class="hidden-sm text-center">
-                                                              @Html.ActionLink(" ", "SeanceEdit", new { id = item.SeanceID }, new { @class = "btn btn-default fa fa-eye" })
+                                                              @Html.ActionLink(" ", "SeanceDetails", new { id = item.SeanceID }, new { @class = "btn btn-default fa fa-eye" })
                                                           </td>
                                                         <td align="center">
-                                                            @Html.ActionLink(" ", "SeanceDetails", new { id = item.SeanceID }, new { @class = "btn btn-default fa fa-pencil" })
+                                                            @Html.ActionLink(" ", "SeanceEdit", new { id = item.SeanceID }, new { @class = "btn btn-default fa fa-pencil" })
                                                             @Html.ActionLink(" ", "SeanceDelete", new { id = item.SeanceID }, new { @class = "btn btn-danger fa fa-trash" })
                                                         </td>
                                                     </tr>
