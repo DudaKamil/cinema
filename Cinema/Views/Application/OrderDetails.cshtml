@@ -78,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Powrót do Podsumowania", "OrderSummary") |
-    @Html.ActionLink("Anuluj Zamówienie", "OrderDelete", new { id = Model.OrderID })
+    <a href="@Url.Action("OrderSummary")" class="btn btn-default">Powrót do Podsumowania</a>
+    @Html.ActionLink("Anuluj Zamówienie", "OrderDelete", new { id = Model.OrderID }, new { @class = "btn btn-warning" })
 </p>

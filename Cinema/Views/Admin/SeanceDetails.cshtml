@@ -7,38 +7,31 @@
     MovieRepository movieRepo = new MovieRepository(new CinemaContext());
 }
 
-<h2>Szczegóły Seansu</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MovieID)
-        </dt>
-
-        <dd>
-            @Html.ActionLink(movieRepo.GetMovieName(Model.MovieID), "MovieDetails", new { id = Model.MovieID })
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShowDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShowDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edytuj", "SeanceEdit", new { id = Model.SeanceID })  |
-    @Html.ActionLink("Powrót do Przeglądu", "SeanceOverview")
-</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h3>Szczegóły Seansu</h3>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading"><strong>@Html.DisplayName(movieRepo.GetMovieName(Model.MovieID))</strong></h4><br />
+            <div class="media-middle">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.ShowDate):&nbsp</th>
+                            <td>@Html.DisplayFor(model => model.ShowDate)</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">@Html.DisplayNameFor(model => model.Type):&nbsp</th>
+                            <td>@Html.DisplayFor(model => model.Type)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <a href="@Url.Action("SeanceOverview")" class="btn btn-default">Powrót do Przeglądu</a>
+                @Html.ActionLink("Edytuj", "SeanceEdit", new { id = Model.MovieID }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
 

@@ -7,55 +7,76 @@
     MovieRepository movieRepo = new MovieRepository(new CinemaContext());
 }
 
-
-<h2>Wybierz Seans</h2>
 @if (!Model.Any())
 {
-    <tr>
-        <td>
-            Przepraszamy, ale dla wybranego filmu nie ma żadnych seansów.
-        </td>
-        <td>
-            @Html.ActionLink("Wybierz inny film", "Repertoire", "Application")
-        </td>
-    </tr>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-12">
+                <div class="panel panel-info panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h2><strong>Nie znaleziono seansów</strong>
+                                </h2>
+                            </div>
+                            <div class="col col-xs-6 text-right">
+                                @Html.ActionLink("Powrót do repertuaru", "Repertoire", null, new { @class = "btn btn-sm btn-raised" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4>Przepraszamy, ale dla wybranego filmu nie ma żadnych seansów.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MovieID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShowDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(movieRepo.GetMovieName(item.MovieID), "Index", "Home")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShowDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    @Html.ActionLink("Kup Bilet", "BuyTicket", new {id = item.SeanceID})
-                </td>
-            </tr>
-        }
-    </table>
-    <p>
-        @Html.ActionLink("Powrót do Repertuaru", "Repertoire")
-    </p>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-offset-2">
+                <div class=" panel panel-info panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h2>
+                                <strong>@Html.Name(movieRepo.GetMovieName(Model.First().MovieID))</strong>
+                            </h2>
+                        </div>
+                        <div class="col col-xs-6 text-right">
+                            @Html.ActionLink("Powrót do repertuaru", "Repertoire", null, new {@class = "btn btn-sm btn-raised"})
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                            <tr>
+                                <th class=" col-md-3">@Html.DisplayNameFor(model => model.ShowDate)</th>
+                                <th class="text-center col-md-3">@Html.DisplayNameFor(model => model.Type)</th>
+                                <th class="text-center col-md-3"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="@item.MovieID">
+                                    <td class="text-center">@Html.DisplayFor(modelItem => item.ShowDate)</td>
+                                    <td class="text-center">@Html.DisplayFor(modelItem => item.Type)</td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("Kup Bilet", "BuyTicket", new { id = item.SeanceID }, new { @class = "btn btn-success" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
 }
 

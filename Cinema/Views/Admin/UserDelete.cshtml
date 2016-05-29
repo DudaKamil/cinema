@@ -4,14 +4,12 @@
     ViewBag.Title = "Usuń Użytkownika";
 }
 
-<h2>Usuń Użytkownika</h2>
-
-<h3>Jesteś pewien, że chcesz to usunąć?</h3>
+<h3>Jesteś pewien, że chcesz usunąć tego użytkownika?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Login)
+            @Html.DisplayNameFor(model => model.Login):
         </dt>
 
         <dd>
@@ -19,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Email):
         </dt>
 
         <dd>
@@ -27,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Name):
         </dt>
 
         <dd>
@@ -40,8 +38,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Usuń" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót do Przeglądu", "UserOverview")
+            <a href="@Url.Action("UserOverview")" class="btn btn-default">Powrót do Przeglądu</a>
+            <input type="submit" value="Usuń" class="btn btn-primary" />
         </div>
     }
 </div>
