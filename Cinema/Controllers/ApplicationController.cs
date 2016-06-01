@@ -88,6 +88,13 @@ namespace Cinema.Controllers
         }
 
         [Authorize]
+        public ActionResult SeatReservation(int id)
+        {
+            TempData["SeanceID"] = id;
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
         public ActionResult BuyTicket(BuyTicketModel buyTicketModel)
         {

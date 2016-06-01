@@ -12,18 +12,19 @@
             <div class="col-xs-6 col-sm-4 col-md-3">
                 <div class="hovereffect">
                     <img class="img-responsive" src="http://placehold.it/200x250" alt="">
-                        <div class="overlay">
-                            <a href="@Url.Action("MovieDetails", new { id = item.MovieID })">
-                                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                                <p>@Html.DisplayFor(modelItem => item.Genre)</p>
-                                <hr />
+                    <!--<img class="img-responsive" src="@Html.DisplayFor(modelItem => item.ImageURL)" alt="...">-->
+                    <div class="overlay">
+                        <a href="@Url.Action("MovieDetails", new {id = item.MovieID})">
+                            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                            <p>@Html.DisplayFor(modelItem => item.Genre)</p>
+                            <hr/>
 
-                                <div class="repertoire-thumbnail-footer">
-                                    @Html.ActionLink("Kup bilet", "SelectSeance", new { id = item.MovieID }, new { @class = "btn btn-raised btn-primary btn-sm" })
-                                </div>
-                            </a>
-                        </div>
+                            <div class="repertoire-thumbnail-footer">
+                                @Html.ActionLink("Kup bilet", "SelectSeance", new {id = item.MovieID}, new {@class = "btn btn-raised btn-primary btn-sm"})
+                            </div>
+                        </a>
                     </div>
+                </div>
                  <h5><strong>@Html.DisplayFor(modelItem => item.Title)</strong></h5>
               </div>
 

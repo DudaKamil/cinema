@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\account\auth.css" />
+    <Content Include="Scripts\account\jquery.seat-charts.min.js" />
     <Content Include="Content\admin\AddFilm.css" />
     <Content Include="Content\Application\Repertoire.css" />
     <Content Include="Content\cinemaTheme.css" />
@@ -129,6 +130,7 @@
     <Content Include="img\posters\Zootopia.jpg" />
     <Content Include="img\top-bg.png" />
     <Content Include="Scripts\account\auth.js" />
+    <Content Include="Scripts\account\SeatReservation.js" />
     <Content Include="Scripts\admin\addFilm.js" />
     <Content Include="Content\admin\adminPanel.css" />
     <Content Include="Scripts\Home\index.js" />
