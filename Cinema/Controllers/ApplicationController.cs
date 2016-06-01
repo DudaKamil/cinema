@@ -15,6 +15,7 @@ namespace Cinema.Controllers
         private readonly SeanceRepository _seanceRepository;
         private readonly UserRepository _userRepository;
         private readonly TicketPriceRepository _ticketPriceRepository;
+        private readonly SeatsRepository _seatsRepository;
 
         public ApplicationController()
         {
@@ -23,6 +24,7 @@ namespace Cinema.Controllers
             _seanceRepository = new SeanceRepository(new CinemaContext());
             _userRepository = new UserRepository(new CinemaContext());
             _ticketPriceRepository = new TicketPriceRepository(new CinemaContext());
+            _seatsRepository = new SeatsRepository(new CinemaContext());
         }
 
         public ActionResult Repertoire()
@@ -88,10 +90,35 @@ namespace Cinema.Controllers
         }
 
         [Authorize]
-        public ActionResult SeatReservation(int id)
-        {
-            TempData["SeanceID"] = id;
+        public ActionResult SeatReservation(int seanceId, int orderId)
+        {   
+            TempData["SeanceID"] = seanceId;
+            TempData["OrderID"] = orderId;
             return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SeatReservation(SeatsModel seatModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (seatModel.RowNumber >= 0 && seatModel.SeatNumber >= 0)
+                {
+                    var seat = new Seats
+                    {
+                        SeanceID = (int)TempData["SeanceID"],
+                        OrderID = (int)TempData["OrderID"],
+                        RowNumber = seatModel.RowNumber,
+                        SeatNumber = seatModel.SeatNumber,
+
+                    };
+                    _seatsRepository.Add(seat);
+                    return RedirectToAction("SeatReservation");
+                }
+                ModelState.AddModelError("", "Muszisz wybrać miejsce.");
+            }
+            return View(seatModel);
         }
 
         [Authorize]
@@ -105,12 +132,12 @@ namespace Cinema.Controllers
                 {
                     var order = new Order
                     {
-                        SeanceID = (int) TempData["SeanceID"],
+                        SeanceID = (int)TempData["SeanceID"],
                         UserID = _userRepository.GetUser(HttpContext.User.Identity.Name).UserID,
                         NormalTicket = buyTicketModel.NormalTicket,
                         ReducedTicket = buyTicketModel.ReducedTicket,
                         TicketCode = Guid.NewGuid().ToString(),
-                        OrderDate = DateTime.Now
+                        OrderDate = DateTime.Now,
                     };
                     _orderRepository.Add(order);
                     return RedirectToAction("OrderSummary");
@@ -159,6 +186,7 @@ namespace Cinema.Controllers
                 ReducedTicket = order.ReducedTicket,
                 Cost = buyTicket.GetTicketsCost(order.NormalTicket, order.ReducedTicket, seance.Type),
                 TicketCode = order.TicketCode
+
             };
             return View(orderDetailsModel);
         }

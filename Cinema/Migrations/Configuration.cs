@@ -96,7 +96,7 @@ namespace Cinema.Migrations
                     ReducedTicket = 2,
                     NormalTicket = 2,
                     TicketCode = Guid.NewGuid().ToString(),
-                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
+                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4),
                 },
                 new Order
                 {
@@ -105,7 +105,7 @@ namespace Cinema.Migrations
                     ReducedTicket = 4,
                     NormalTicket = 4,
                     TicketCode = Guid.NewGuid().ToString(),
-                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4)
+                    OrderDate = DateTime.Today.AddDays(-3).AddHours(-4),
                 }
             };
             orderes.ForEach(order => context.Orders.AddOrUpdate(order));

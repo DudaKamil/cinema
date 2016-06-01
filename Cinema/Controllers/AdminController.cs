@@ -328,11 +328,6 @@ namespace Cinema.Controllers
             return View(_orderRepository.GetAllOrders());
         }
 
-        //public ActionResult PricesOverview()
-        //{
-
-        //    return View(_ticketPriceRepository.GetList());
-        //}
         public ActionResult PricesEdit(int? id)
         {
 

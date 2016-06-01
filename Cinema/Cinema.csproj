@@ -183,12 +183,14 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Seance.cs" />
+    <Compile Include="Models\Seats.cs" />
     <Compile Include="Models\TicketPrice.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MovieRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />
     <Compile Include="Services\SeanceRepository.cs" />
+    <Compile Include="Services\SeatsRepository.cs" />
     <Compile Include="Services\TicketPriceRepository.cs" />
     <Compile Include="Services\UserRepository.cs" />
   </ItemGroup>

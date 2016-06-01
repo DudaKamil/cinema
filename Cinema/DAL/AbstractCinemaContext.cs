@@ -16,6 +16,7 @@ namespace Cinema.DAL
         public DbSet<Seance> Seances { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<TicketPrice> TicketPrices { get; set; }
+        public DbSet<Seats> Seats { get; set; }
 
         public virtual Movie GetMovieById(int id)
         {
