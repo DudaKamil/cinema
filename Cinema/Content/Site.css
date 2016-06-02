@@ -210,3 +210,7 @@ span.seatCharts-legendDescription {
     text-align: center;
     list-style: none;
 }
+
+p.movie-description {
+   width: 320px !important;
+}
