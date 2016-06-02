@@ -20,6 +20,8 @@ function equalHeight(group) {
     group.each(function () { $(this).height(tallest); });
 }
 
+$(window).resize(equalHeight($(".thumbnail")));
+
 $(window).load(function () {
     equalHeight($(".thumbnail"));
 });

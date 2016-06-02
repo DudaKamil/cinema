@@ -43,8 +43,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-10">
-                                    <a href="@Url.Action("SelectSeance")" class="btn btn-default">Powrót do Przeglądu</a>
-                                    <button type="submit" class="btn btn-primary">Kup bilet</button>
+                                    <a href="@Url.Action("Repertoire")" class="btn btn-default">Powrót do Przeglądu</a>
+                                    @*Do poprawy*@
+                                    @Html.ActionLink("Wybierz Miejsce", "SeatReservation", new { id = 1 }, new { @class = "btn btn-success" })
                                 </div>
                             </div>
                         </div>

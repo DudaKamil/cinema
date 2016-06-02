@@ -4,15 +4,13 @@
     ViewBag.Title = "SeatReservation";
 }
 
-<h2>Zarezerwuj miejsce</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="container">
         <div class="row">
-            <div class=" col-md-12 col-md-offset-1">
+            <div class=" col-md-12 col-md-offset-1 col-xs-12">
                 <div class="demo">
                     <div id="seat-map">
                         <div class="front">EKRAN</div>
@@ -24,8 +22,8 @@
                         <ul id="selected-seats"></ul>
                         <p>Bilety: <span id="counter">0</span></p>
 
-                        @*do poprawy*@
-                        @Html.ActionLink("Kup Bilet", "BuyTicket", new {id = 1}, new {@class = "btn btn-raised btn-success"})
+                        
+                        <button type="submit" class="btn btn-raised btn-success">Kup bilet</button>
 
                         <div id="legend"></div>
                     </div>
