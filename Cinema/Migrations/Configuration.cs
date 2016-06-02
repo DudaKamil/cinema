@@ -130,24 +130,169 @@ namespace Cinema.Migrations
 
             var seances = new List<Seance>
             {
-                new Seance
+                     new Seance
                 {
-                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
                     Type = "2D",
-                    ShowDate = DateTime.Today.AddDays(14).AddHours(1)
+                    ShowDate = DateTime.Today.AddDays(0).AddHours(2)
                 },
-                new Seance
+
+                           new Seance
                 {
-                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
                     Type = "3D",
-                    ShowDate = DateTime.Today.AddDays(14).AddHours(2)
+                    ShowDate = DateTime.Today.AddDays(0).AddHours(6)
                 },
+
+
                 new Seance
                 {
-                    MovieID = movies.Single(m => m.Title == "Movie 1 Title").MovieID,
+                    MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
                     Type = "2D",
-                    ShowDate = DateTime.Today.AddDays(14).AddHours(3)
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(1)
+                },
+
+                 new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
+                    Type = "3D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(3)
+                },
+
+                      new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
+                    Type = "3D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(6)
+                },
+
+         
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Pi¹ta fala").MovieID,
+                    Type = "3D",
+                    ShowDate = DateTime.Today.AddDays(4).AddHours(2)
+                },
+
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Pi¹ta fala").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(4).AddHours(4)
+                },
+
+                new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Ksiêga D¿ungli").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(3)
+                },
+
+                 new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Ksiêga D¿ungli").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(6)
+                },
+
+                 new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "M³ody Mesjasz").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(3).AddHours(3)
+                },
+
+                 new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "M³ody Mesjasz").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(3).AddHours(5)
+                },
+
+                  new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "S¹siedzi 2").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(1).AddHours(2)
+                },
+
+                   new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "S¹siedzi 2").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(0.5)
+                },
+
+                   new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Zak³adnik z Wall Street").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(3).AddHours(2)
+                },
+
+                   new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Zak³adnik z Wall Street").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(0).AddHours(1)
+                },
+
+                    new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Bardzo fajny gigant").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(1).AddHours(3)
+                },
+
+                     new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Bardzo fajny gigant").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(4).AddHours(2)
+                },
+
+                     new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Tarzan: Legenda").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(5).AddHours(2)
+                },
+
+                     new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Tarzan: Legenda").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(0).AddHours(3)
+                },
+
+                      new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Ben-Hur").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(1).AddHours(1)
+                },
+
+                      new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Ben-Hur").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(5)
+                },
+
+                       new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Agent i Pó³").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(4).AddHours(0)
+                },
+
+                       new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Agent i Pó³").MovieID,
+                    Type = "3D",
+                    ShowDate = DateTime.Today.AddDays(2).AddHours(3)
                 }
+
             };
 
             seances.ForEach(seance => context.Seances.AddOrUpdate(seance));
