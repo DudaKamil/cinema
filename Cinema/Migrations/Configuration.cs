@@ -163,7 +163,7 @@ namespace Cinema.Migrations
                 {
                     MovieID = movies.Single(m => m.Title == "Plan Maggie").MovieID,
                     Type = "3D",
-                    ShowDate = DateTime.Today.AddDays(2).AddHours(6)
+                    ShowDate = DateTime.Today.AddDays(3).AddHours(6)
                 },
 
          
