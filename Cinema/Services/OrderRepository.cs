@@ -14,14 +14,14 @@ namespace Cinema.Services
             _cinemaContext = cinemaContext;
         }
 
-        public List<Order> GetUserOrdersList(int? userId)
+        public List<Order> GetUserOrdersList(int userId)
         {
-            return _cinemaContext.Orders.Where(order => order.UserID == userId).ToList();
+            return _cinemaContext.GetOrdersByUserId(userId);
         }
 
-        public Order GetOrder(int? orderId)
+        public Order GetOrder(int orderId)
         {
-            return _cinemaContext.Orders.FirstOrDefault(order => order.OrderID == orderId);
+            return _cinemaContext.GetOrderById(orderId);
         }
 
         public void Remove(int id)
@@ -39,7 +39,7 @@ namespace Cinema.Services
 
         public List<Order> GetAllOrders()
         {
-            return _cinemaContext.Orders.ToList();
+            return _cinemaContext.GetAllOrders();
         }
     }
 }

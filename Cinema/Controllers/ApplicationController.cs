@@ -163,7 +163,7 @@ namespace Cinema.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var order = _orderRepository.GetOrder(id);
+            var order = _orderRepository.GetOrder(id.Value);
             if (order == null)
             {
                 return HttpNotFound();
@@ -198,7 +198,7 @@ namespace Cinema.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var order = _orderRepository.GetOrder(id);
+            var order = _orderRepository.GetOrder(id.Value);
             if (order == null)
             {
                 return HttpNotFound();

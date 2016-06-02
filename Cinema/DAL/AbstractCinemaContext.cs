@@ -27,5 +27,20 @@ namespace Cinema.DAL
         {
             return Movies.ToList();
         }
+
+        public virtual List<Order> GetOrdersByUserId(int id)
+        {
+            return Orders.Where(order => order.UserID == id).ToList();
+        }
+
+        public virtual List<Order> GetAllOrders()
+        {
+           return Orders.ToList();
+        }
+
+        public virtual Order GetOrderById(int id)
+        {
+            return Orders.FirstOrDefault(order => order.OrderID == id);
+        }
     }
 }
