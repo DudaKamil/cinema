@@ -83,42 +83,9 @@ namespace Cinema.Controllers
         }
 
         [Authorize]
-        public ActionResult BuyTicket(int id)
-        {
-            TempData["SeanceID"] = id;
+        public ActionResult BuyTicket()
+        {           
             return View();
-        }
-
-        [Authorize]
-        public ActionResult SeatReservation(int seanceId, int orderId)
-        {   
-            TempData["SeanceID"] = seanceId;
-            TempData["OrderID"] = orderId;
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult SeatReservation(SeatsModel seatModel)
-        {
-            if (ModelState.IsValid)
-            {
-                if (seatModel.RowNumber >= 0 && seatModel.SeatNumber >= 0)
-                {
-                    var seat = new Seats
-                    {
-                        SeanceID = (int)TempData["SeanceID"],
-                        OrderID = (int)TempData["OrderID"],
-                        RowNumber = seatModel.RowNumber,
-                        SeatNumber = seatModel.SeatNumber,
-
-                    };
-                    _seatsRepository.Add(seat);
-                    return RedirectToAction("SeatReservation");
-                }
-                ModelState.AddModelError("", "Muszisz wybrać miejsce.");
-            }
-            return View(seatModel);
         }
 
         [Authorize]
@@ -146,6 +113,41 @@ namespace Cinema.Controllers
             }
             return View(buyTicketModel);
         }
+
+
+        [Authorize]
+        public ActionResult SeatReservation(int id)
+        {
+            TempData["SeanceID"] = id;
+            return View(_seanceRepository.GetSeance(id));
+        }
+
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SeatReservation(SeatsModel seatModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (seatModel.RowNumber >= 0 && seatModel.SeatNumber >= 0)
+                {
+                    var seat = new Seats
+                    {
+                        SeanceID = (int)TempData["SeanceID"],
+                        OrderID = (int)TempData["OrderID"],
+                        RowNumber = seatModel.RowNumber,
+                        SeatNumber = seatModel.SeatNumber,
+
+                    };
+                    _seatsRepository.Add(seat);
+                    return RedirectToAction("BuyTicket");
+                }
+                ModelState.AddModelError("", "Muszisz wybrać miejsce.");
+            }
+            return View();
+        }
+
 
         [Authorize]
         public ActionResult OrderSummary()

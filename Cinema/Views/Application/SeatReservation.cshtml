@@ -1,7 +1,10 @@
-﻿@model Cinema.Models.Seance
+﻿@using Cinema.DAL
+@using Cinema.Services
+@model Cinema.Models.Seance
 
 @{
     ViewBag.Title = "SeatReservation";
+    MovieRepository movieRepo = new MovieRepository(new CinemaContext());
 }
 
 
@@ -16,8 +19,8 @@
                         <div class="front">EKRAN</div>
                     </div>
                     <div class="booking-details">
-                        <p>Film: <span> Tytuł filmu</span></p>
-                        <p>Data seansu: <span>Styczeń 1, 20:00</span></p>
+                        <p>Film: <span>@movieRepo.GetMovieName(Model.MovieID)</span></p>
+                        <p>Data seansu: <span>@Model.ShowDate</span></p>
                         <p>Miejsce: </p>
                         <ul id="selected-seats"></ul>
                         <p>Bilety: <span id="counter">0</span></p>
