@@ -131,21 +131,13 @@ namespace Cinema.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (seatModel.RowNumber >= 0 && seatModel.SeatNumber >= 0)
-                {
                     var seat = new Seats
                     {
-                        SeanceID = (int)TempData["SeanceID"],
-                        OrderID = (int)TempData["OrderID"],
-                        RowNumber = seatModel.RowNumber,
-                        SeatNumber = seatModel.SeatNumber,
+                        TotalTickets = seatModel.TotalTickets                        
 
                     };
                     _seatsRepository.Add(seat);
-                    return RedirectToAction("BuyTicket");
-                }
-                ModelState.AddModelError("", "Muszisz wybrać miejsce.");
-            }
+                    return RedirectToAction("BuyTicket");            }
             return View();
         }
 

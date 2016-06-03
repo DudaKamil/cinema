@@ -16,31 +16,9 @@ namespace Cinema.Services
             _cinemaContext = cinemaContext;
         }
 
-        public List<Seats> GetSeatsList(int? seanceId, int? orderId)
-        {
-            return _cinemaContext.Seats.Where(seat => seat.OrderID == orderId)
-                .Where(seat => seat.SeanceID == seanceId)
-                .ToList();
-        }
-
         public Seats GetSeat(int id)
         {
             return _cinemaContext.Seats.FirstOrDefault(u => u.SeatID == id);
-        }
-
-        public List<Seats> GetAllSeatsForOrder(int id)
-        {
-            return _cinemaContext.Seats.Where(seat => seat.OrderID == id).ToList();
-        }
-
-        public int GetRowNumber(int id)
-        {
-            return _cinemaContext.Seats.FirstOrDefault(u => u.SeatID == id).RowNumber;
-        }
-
-        public int GetSeatNumber(int id)
-        {
-            return _cinemaContext.Seats.FirstOrDefault(u => u.SeatID == id).SeatNumber;
         }
 
         public List<Seats> GetAllSeats()

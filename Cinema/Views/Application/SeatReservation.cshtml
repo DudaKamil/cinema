@@ -6,6 +6,7 @@
     ViewBag.Title = "SeatReservation";
     MovieRepository movieRepo = new MovieRepository(new CinemaContext());
     SeanceRepository seanceRepo = new SeanceRepository(new CinemaContext());
+    var totalTik = 0;
 }
 
 
@@ -26,7 +27,6 @@
                         <ul id="selected-seats"></ul>
                         <p>Bilety: <span id="counter"></span></p>
 
-                        @*<label for="charLeft">mBilety: 0</label>*@
 
 
                         <button type="submit" class="btn btn-raised btn-success">Kup bilet</button>

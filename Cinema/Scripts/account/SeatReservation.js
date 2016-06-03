@@ -1,6 +1,5 @@
 ﻿var price = 10; //price
 $(document).ready(function () {
-    //var amount = 0;
     var $cart = $('#selected-seats'), //Sitting Area
 	$counter = $('#counter'), //Votes
 	$total = $('#total'); //Total money
@@ -38,8 +37,6 @@ $(document).ready(function () {
 					.data('seatId', this.settings.id)
 					.appendTo($cart);
 
-                //amount++;
-                //$("label[for='charLeft']").html("Bilety: " + amount);
 
                 $counter.text(sc.find('selected').length + 1);
                 $total.text(recalculateTotal(sc) + price);
@@ -47,8 +44,6 @@ $(document).ready(function () {
                 return 'selected';
             } else if (this.status() == 'selected') { //Checked
 
-                //amount--;
-                //$("label[for='charLeft']").html("Bilety: " + amount);
 
                 //Update Number
                 $counter.text(sc.find('selected').length - 1);

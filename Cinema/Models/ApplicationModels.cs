@@ -101,15 +101,7 @@ namespace Cinema.Models
 
         public int SeanceID { get; set; }
 
-        public List<string> ReservedSeatsList { get; set; }
-
         public int TotalTickets { get; set; }
-
-        [DisplayName("Rząd")]
-        public int RowNumber { get; set; }
-
-        [DisplayName("Miejsce")]
-        public int SeatNumber { get; set; }
     }
 
 
