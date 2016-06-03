@@ -1,10 +1,9 @@
-﻿using Cinema.Services;
-using Cinema.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Net;
 using Cinema.DAL;
+using Cinema.Models;
+using Cinema.Services;
 
 namespace Cinema.Controllers
 {
@@ -14,12 +13,12 @@ namespace Cinema.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            int amountMovies = _movieRepository.GetMovieList().Count;
-            List<string> moviesRepeated = new List<string>();
-            List<Movie> movieList = new List<Movie>();
+            var amountMovies = _movieRepository.GetMovieList().Count;
+            var moviesRepeated = new List<string>();
+            var movieList = new List<Movie>();
             int random;
-            Random r = new Random();
-            for (int i = 1; i <= 6; i++)
+            var r = new Random();
+            for (var i = 1; i <= 6; i++)
             {
                 random = r.Next(amountMovies);
                 if (moviesRepeated.Contains(_movieRepository.GetMovieName(random)))
@@ -29,9 +28,12 @@ namespace Cinema.Controllers
                         random = r.Next(amountMovies);
                     }
                 }
-                Movie move = _movieRepository.GetMovie(random);
-                moviesRepeated.Add(_movieRepository.GetMovieName(random));
-                movieList.Add(move);
+                var move = _movieRepository.GetMovie(random);
+                if (move != null)
+                {
+                    moviesRepeated.Add(_movieRepository.GetMovieName(random));
+                    movieList.Add(move);
+                }
             }
             return View(movieList);
         }
