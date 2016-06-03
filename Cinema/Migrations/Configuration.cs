@@ -113,12 +113,28 @@ namespace Cinema.Migrations
                     ImageURL = "http://media.santabanta.com/gallery/Hollywood%20Movies/The%20Jungle%20Book/The-Jungle-Book-1-a_th.jpg",
                     Length = 120
                 },
-                   new Movie
+                new Movie
                 {
                     Title = "Pi¹ta fala",
                     Genre = "Thriller",
-                    Description = "Po inwazji kosmitów nastolatka poszukuje zaginionego brata, który prawdopodobnie zosta³ porwany przez obcych ",
+                    Description = "Po inwazji kosmitów nastolatka poszukuje zaginionego brata, który prawdopodobnie zosta³ porwany przez obcych. ",
                     ImageURL = "http://media.santabanta.com/gallery/Hollywood%20Movies/The%205th%20Wave/The-5th-Wave-1-a_th.jpg",
+                    Length = 120
+                },
+                new Movie
+                {
+                    Title = "Równi goœcie",
+                    Genre = "Komedia",
+                    Description = "Prywatny detektyw Holland March (Ryan Gosling) i gruboskórny miêœniak do wynajêcia Jackson Healy (Russell Crowe) nie pa³aj¹ do siebie sympati¹. Zostaj¹ jednak wynajêci do rozwik³ania tej samej sprawy zaginionej dziewczyny.",
+                    ImageURL = "http://media3.woopic.com/93/f/200x250/q/85/fd/p/cinemovies%7Cca6%7C39b%7C0d18383aaa40a4b1dfb1622873/the-nice-guys%7Cmovies-229665-1.jpg",
+                    Length = 120
+                },
+                new Movie
+                {
+                    Title = "Kapitan Ameryka: Wojna bohaterów",
+                    Genre = "Sci-Fi",
+                    Description = "Ustawa zmuszaj¹ca superbohaterów do rejestracji i ujawnienia ich to¿samoœci doprowadza do konfliktu pomiêdzy zwolennikami a przeciwnikami nowego prawa.  ",
+                    ImageURL = "http://movierulez.me/wp-content/uploads/2016/05/Captain-America-Civil-War-2016-Full-Movie-Watch-Online.jpg",
                     Length = 120
                 },
 
@@ -292,6 +308,24 @@ namespace Cinema.Migrations
                     Type = "3D",
                     ShowDate = DateTime.Today.AddDays(2).AddHours(3)
                 }
+                         new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Równi goœcie").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(1).AddHours(2)
+                },
+                           new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Kapitan Ameryka: Wojna bohaterów").MovieID,
+                    Type = "2D",
+                    ShowDate = DateTime.Today.AddDays(0).AddHours(2)
+                },
+                             new Seance
+                {
+                    MovieID = movies.Single(m => m.Title == "Kapitan Ameryka: Wojna bohaterów").MovieID,
+                    Type = "3D",
+                    ShowDate = DateTime.Today.AddDays(3).AddHours(2)
+                },
 
             };
 
