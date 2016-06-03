@@ -109,4 +109,6 @@ namespace Cinema.Models
         [DisplayName("Miejsce")]
         public int SeatNumber { get; set; }
     }
+
+
 }

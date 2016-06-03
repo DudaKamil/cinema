@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Szczegóły Filmu";
 }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -30,7 +29,7 @@
                     </tbody>
                 </table>
                 <br/>
-                <p>@Html.DisplayFor(model => model.Description)</p>
+                <p class="movie-description">@Html.DisplayFor(model => model.Description)</p>
                 <br/>
                 <a href="@Url.Action("MovieOverview")" class="btn btn-default">Powrót do Przeglądu</a>
                 @Html.ActionLink("Edytuj", "MovieEdit", new {id = Model.MovieID}, new {@class = "btn btn-primary"})

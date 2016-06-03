@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Kup Bilet";
-   
 }
 
 
@@ -43,9 +42,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-10">
-                                    <a href="@Url.Action("Repertoire")" class="btn btn-default">Powrót do Przeglądu</a>
-                                    @*Do poprawy*@
-                                    @Html.ActionLink("Wybierz Miejsce", "SeatReservation", new { id = 1 }, new { @class = "btn btn-success" })
+                                    <a href="@Url.Action("Repertoire")" class="btn btn-default">Powrót do Przeglądu</a>                                   
+                                    <button type="submit" class="btn btn-success">Wybierz Miejsce</button>
                                 </div>
                             </div>
                         </div>
