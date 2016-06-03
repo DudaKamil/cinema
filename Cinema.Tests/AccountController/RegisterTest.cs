@@ -1,17 +1,15 @@
 ﻿using System;
-using Cinema.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using Cinema.DAL;
 
 namespace Cinema.Tests.AccountController
 {
     [TestClass]
     public class RegisterTest
     {
+        private static readonly Random rand = new Random();
         private IWebDriver driver;
-        static Random rand = new Random();
         private int number;
 
 
@@ -33,15 +31,15 @@ namespace Cinema.Tests.AccountController
         [TestMethod]
         public void UserCreatedSuccessfullyTest()
         {
-            string expected = "Przegląd Zamówień - Cinema";
+            var expected = "Przegląd Zamówień - Cinema";
             string actual = null;
-            
+
             driver.Navigate().GoToUrl("http://localhost:49610/Account/Register");
-            IWebElement loginTextBox = driver.FindElement(By.Id("Login"));
-            IWebElement passwordTextBox = driver.FindElement(By.Id("Password"));
-            IWebElement confirmPasswordTextBox = driver.FindElement(By.Id("ConfirmPassword"));
-            IWebElement emailTextBox = driver.FindElement(By.Id("Email"));
-            IWebElement nameTextBox = driver.FindElement(By.Id("Name"));
+            var loginTextBox = driver.FindElement(By.Id("Login"));
+            var passwordTextBox = driver.FindElement(By.Id("Password"));
+            var confirmPasswordTextBox = driver.FindElement(By.Id("ConfirmPassword"));
+            var emailTextBox = driver.FindElement(By.Id("Email"));
+            var nameTextBox = driver.FindElement(By.Id("Name"));
 
 
             loginTextBox.SendKeys(number + "newusertest");
@@ -62,7 +60,7 @@ namespace Cinema.Tests.AccountController
 
             actual = driver.Title;
 
-            Assert.AreEqual(expected, actual);         
+            Assert.AreEqual(expected, actual);
         }
     }
 }
