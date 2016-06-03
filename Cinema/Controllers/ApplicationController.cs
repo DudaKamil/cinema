@@ -119,7 +119,8 @@ namespace Cinema.Controllers
         public ActionResult SeatReservation(int id)
         {
             TempData["SeanceID"] = id;
-            return View(_seanceRepository.GetSeance(id));
+            SeatsModel seatsModel = new SeatsModel {SeanceID = id};
+            return View(seatsModel);
         }
 
 

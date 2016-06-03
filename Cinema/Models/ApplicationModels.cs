@@ -99,9 +99,11 @@ namespace Cinema.Models
     {
         public int? SeatID { get; set; }
 
-        public int? SeanceID { get; set; }
+        public int SeanceID { get; set; }
 
-        public int? OrderID { get; set; }
+        public List<string> ReservedSeatsList { get; set; }
+
+        public int TotalTickets { get; set; }
 
         [DisplayName("Rząd")]
         public int RowNumber { get; set; }
