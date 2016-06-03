@@ -136,7 +136,7 @@ namespace Cinema.Migrations
                     Description = "Ustawa zmuszaj¹ca superbohaterów do rejestracji i ujawnienia ich to¿samoœci doprowadza do konfliktu pomiêdzy zwolennikami a przeciwnikami nowego prawa.  ",
                     ImageURL = "http://movierulez.me/wp-content/uploads/2016/05/Captain-America-Civil-War-2016-Full-Movie-Watch-Online.jpg",
                     Length = 120
-                },
+                }
 
 
             };
@@ -307,7 +307,7 @@ namespace Cinema.Migrations
                     MovieID = movies.Single(m => m.Title == "Agent i Pó³").MovieID,
                     Type = "3D",
                     ShowDate = DateTime.Today.AddDays(2).AddHours(3)
-                }
+                },
                          new Seance
                 {
                     MovieID = movies.Single(m => m.Title == "Równi goœcie").MovieID,
@@ -325,7 +325,7 @@ namespace Cinema.Migrations
                     MovieID = movies.Single(m => m.Title == "Kapitan Ameryka: Wojna bohaterów").MovieID,
                     Type = "3D",
                     ShowDate = DateTime.Today.AddDays(3).AddHours(2)
-                },
+                }
 
             };
 
