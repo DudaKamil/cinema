@@ -9,75 +9,20 @@
  
 <h1>Premiery</h1>
 <div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="@Html.DisplayFor(Model => Model[1].ImageURL)">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[1].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[1].Description) </p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
+
+    @foreach (var movie in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@movie.ImageURL">
+                <div class="caption">
+                    <h3>@movie.Title</h3>
+                    <p>@movie.Description</p>
+                    <div class="thumbnail-footer">
+                        <p>@Html.ActionLink("Kup bilet", "SelectSeance","Application", new { id = movie.MovieID }, new { @class = "btn btn-primary" })</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img class="img-fluid" src="@Html.DisplayFor(Model => Model[2].ImageURL)" alt="...">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[2].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[2].Description)</p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
-                </div>            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img class="img-fluid" src="@Html.DisplayFor(Model => Model[3].ImageURL)" alt="...">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[3].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[3].Description)</p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
-                </div>
-             </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="@Html.DisplayFor(Model => Model[4].ImageURL)" alt="...">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[4].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[4].Description)</p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="@Html.DisplayFor(Model => Model[5].ImageURL)" alt="...">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[5].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[5].Description)</p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="@Html.DisplayFor(Model => Model[6].ImageURL)" alt="...">
-            <div class="caption">
-                <h3>@Html.DisplayFor(Model => Model[6].Title)</h3>
-                <p>@Html.DisplayFor(Model => Model[6].Description)</p>
-                <div class="thumbnail-footer">
-                    <p><a href="#" class="btn btn-primary" role="button">Kup bilet</a> <a href="#" class="btn btn-default" role="button">Rezerwuj</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </div>

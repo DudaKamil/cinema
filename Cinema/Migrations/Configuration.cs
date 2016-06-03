@@ -85,7 +85,7 @@ namespace Cinema.Migrations
                 {
                     Title = "Zak³adnik z Wall Street",
                     Genre = "Dramat",
-                    Description = "Money Monster to popularny program telewizyjny, którego gwiazda, Lee Gates (George Clooney), zwany guru Wall Street, doradza widzom, jak i w co inwestowaæ pieni¹dze. Kiedy s³uchaj¹cy jego finansowych wskazówek Kyle Budwell (Jack O'Connell) traci wszystkie oszczêdnoœci, terroryzuje ekipê show i na planie, podczas programu na ¿ywo, grozi Lee œmierci¹, jeœli ten nie sprawi, ¿e akcje, w które zainwestowa³, nie pójd¹ do góry w ci¹gu doby. Publicznoœæ telewizyjna zamiera w przera¿eniu, ogl¹dalnoœæ show roœnie w rekordowym tempie. Ile warte jest ¿ycie cz³owieka? ",
+                    Description = "Money Monster to popularny program telewizyjny. Publicznoœæ telewizyjna zamiera w przera¿eniu, ogl¹dalnoœæ show roœnie w rekordowym tempie. Ile warte jest ¿ycie cz³owieka? ",
                     ImageURL = "http://erenguldas.com/portfolyo/izmovie/assets/img/coming-soon-1.jpg",
                     Length = 120
                 },

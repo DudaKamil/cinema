@@ -14,23 +14,23 @@ namespace Cinema.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
-            List<int> repeat = new List<int>();
+            int amountMovies = _movieRepository.GetMovieList().Count;
+            List<string> moviesRepeated = new List<string>();
             List<Movie> movieList = new List<Movie>();
             int random;
             Random r = new Random();
-            for (int i = 1; i <= 7; i++)
+            for (int i = 1; i <= 6; i++)
             {
-                random = r.Next(19)+1;
-                if (repeat.Contains(random))
+                random = r.Next(amountMovies);
+                if (moviesRepeated.Contains(_movieRepository.GetMovieName(random)))
                 {
-                    while (!repeat.Contains(random))
+                    while (moviesRepeated.Contains(_movieRepository.GetMovieName(random)))
                     {
-                        random = r.Next(20);
+                        random = r.Next(amountMovies);
                     }
                 }
                 Movie move = _movieRepository.GetMovie(random);
-                repeat.Add(random);
+                moviesRepeated.Add(_movieRepository.GetMovieName(random));
                 movieList.Add(move);
             }
             return View(movieList);
